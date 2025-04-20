@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Navbar as HeroUINavbar,
   NavbarContent,
@@ -24,7 +26,9 @@ import {
   HeartFilledIcon,
   SearchIcon,
   Logo,
+  LinkedinIcon,
 } from "@/components/icons";
+import { Popover, PopoverContent, PopoverTrigger } from "@heroui/react";
 
 export const Navbar = () => {
   const searchInput = (
@@ -63,7 +67,7 @@ export const Navbar = () => {
               <NextLink
                 className={clsx(
                   linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
+                  "data-[active=true]:text-primary data-[active=true]:font-medium"
                 )}
                 color="foreground"
                 href={item.href}
@@ -89,21 +93,41 @@ export const Navbar = () => {
           <Link isExternal aria-label="Github" href={siteConfig.links.github}>
             <GithubIcon className="text-default-500" />
           </Link>
+          <Link
+            isExternal
+            aria-label="Linkedin"
+            href={siteConfig.links.linkedin}
+          >
+            <LinkedinIcon className="text-default-500" />
+          </Link>
           <ThemeSwitch />
         </NavbarItem>
         {/* <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem> */}
         <NavbarItem className="hidden md:flex">
-          <Button
-            isExternal
-            as={Link}
-            className="text-sm font-normal text-default-600 bg-default-100"
-            // href={siteConfig.links.sponsor}
-            // onPress={() => {}}
-            startContent={<HeartFilledIcon className="text-danger" />}
-            variant="flat"
-          >
-            Sponsor
-          </Button>
+          <Popover placement="bottom" showArrow={true}>
+            <PopoverTrigger>
+              <Button
+                isExternal
+                as={Link}
+                className="text-sm font-normal text-default-600 bg-default-100"
+                // href={siteConfig.links.sponsor}
+                // onPress={() => {}}
+                startContent={<HeartFilledIcon className="text-danger" />}
+                variant="flat"
+              >
+                Sponsor
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent>
+              <div className="px-1 py-2">
+                {/* <div className="text-small font-bold">Popover Content</div> */}
+                <div className="text-small font-bold">
+                  Thanks for your kindness, but no need for sponsorship. Love
+                  you! ❤️
+                </div>
+              </div>
+            </PopoverContent>
+          </Popover>
         </NavbarItem>
       </NavbarContent>
 

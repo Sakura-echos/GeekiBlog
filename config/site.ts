@@ -63,7 +63,7 @@ export const siteConfig = {
     github: "https://github.com/Sakura-echos",
     twitter: "https://twitter.com/hero_ui",
     docs: "https://heroui.com",
-    discord: "https://discord.gg/9b6yyZKmH4",
+    linkedin: "https://www.linkedin.com/in/zijie-huang-218811297",
     sponsor: "https://patreon.com/jrgarciadev",
   },
 };
