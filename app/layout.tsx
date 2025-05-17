@@ -39,10 +39,20 @@ export default function RootLayout({
                 className={clsx(
                     'min-h-screen bg-background font-sans antialiased',
                     fontSans.variable
-                    // 'bg-cover bg-center bg-no-repeat bg-fixed bg-[url("/image/bg.png")] opacity-50'
                 )}
             >
-                <div className="absolute inset-0 bg-[url('/image/bg.png')] bg-cover bg-center bg-no-repeat bg-fixed opacity-50 z-0"></div>
+                {/* inset-0 - 填满整个视口
+
+                bg-cover - 覆盖整个区域
+ 
+                bg-center - 居中显示
+
+                bg-no-repeat - 不重复
+
+                opacity-50 - 50%透明度
+
+                z-0 - 确保在其他内容之下 */}
+                <div className="fixed inset-0 bg-[url('/image/bg.png')] bg-cover bg-center bg-no-repeat bg-fixed opacity-50 z-0"></div>
                 <Providers
                     themeProps={{ attribute: 'class', defaultTheme: 'light' }}
                 >

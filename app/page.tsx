@@ -30,77 +30,79 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
-            <p>2</p>
 
-            {/* <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden">
+            <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden">
                 <OrbitingCircles>
-                    <p>React</p>
-                    <p>Vue</p>
-                    <p>Angular</p>
-                    <p>ReactNative</p>
-                    <p>Redux</p>
-                    <p>TypeScript</p>
+                    <Image
+                        src="/icons/React.svg"
+                        alt="React Icon"
+                        width={50}
+                        height={50}
+                    />
+                    <Image
+                        src="/icons/Vue.svg"
+                        alt="Vue Icon"
+                        width={50}
+                        height={50}
+                    />
+                    <Image
+                        src="/icons/Angular.svg"
+                        alt="Angular Icon"
+                        width={50}
+                        height={50}
+                    />
+                    <Image
+                        src="/icons/CSS3.svg"
+                        alt="CSS3 Icon"
+                        width={50}
+                        height={50}
+                    />
+                    <Image
+                        src="/icons/HTML5.svg"
+                        alt="HTML5 Icon"
+                        width={50}
+                        height={50}
+                    />
+                    <Image
+                        src="/icons/Typescript.svg"
+                        alt="Typescript Icon"
+                        width={50}
+                        height={50}
+                    />
+                    <Image
+                        src="/icons/Javascript.svg"
+                        alt="Javascript Icon"
+                        width={50}
+                        height={50}
+                    />
                 </OrbitingCircles>
-                <OrbitingCircles radius={100} reverse>
-                    <p>Android</p>
-                    <p>IOS</p>
-                    <p>Git</p>
-                    <p>Charles</p>
-                    <p>WireShark</p>
+                <OrbitingCircles radius={90} reverse>
+                    <Image
+                        src="/icons/Android.svg"
+                        alt="Android Icon"
+                        width={50}
+                        height={50}
+                    />
+                    <Image
+                        src="/icons/Ios.svg"
+                        alt="Ios Icon"
+                        width={50}
+                        height={50}
+                    />
+                    <Image
+                        src="/icons/Github.svg"
+                        alt="Github Icon"
+                        width={50}
+                        height={50}
+                    />
+                    <Image
+                        src="/icons/Wireshark.svg"
+                        alt="Wireshark Icon"
+                        width={50}
+                        height={50}
+                    />
                 </OrbitingCircles>
-            </div> */}
+            </div>
         </div>
     )
 }
