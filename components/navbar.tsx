@@ -61,7 +61,7 @@ export const Navbar = () => {
                         href="/"
                     >
                         <Logo />
-                        <p className="font-bold text-inherit">Geeki</p>
+                        <p className="font-bold text-inherit">Geeki's blog</p>
                     </NextLink>
                 </NavbarBrand>
                 <ul className="hidden lg:flex gap-4 justify-start ml-2">
@@ -107,7 +107,7 @@ export const Navbar = () => {
                     >
                         <LinkedinIcon className="text-default-500" />
                     </Link>
-                    <ThemeSwitch />
+                    {/* <ThemeSwitch /> */}
                 </NavbarItem>
                 {/* <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem> */}
                 <NavbarItem className="hidden md:flex">

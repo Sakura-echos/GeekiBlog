@@ -39,8 +39,10 @@ export default function RootLayout({
                 className={clsx(
                     'min-h-screen bg-background font-sans antialiased',
                     fontSans.variable
+                    // 'bg-cover bg-center bg-no-repeat bg-fixed bg-[url("/image/bg.png")] opacity-50'
                 )}
             >
+                <div className="absolute inset-0 bg-[url('/image/bg.png')] bg-cover bg-center bg-no-repeat bg-fixed opacity-50 z-0"></div>
                 <Providers
                     themeProps={{ attribute: 'class', defaultTheme: 'light' }}
                 >
