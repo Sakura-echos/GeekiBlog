@@ -4,11 +4,11 @@ import { TextGenerateEffect } from '@/components/ui/text-generate-effect'
 import { InteractiveHoverButton } from '@/components/magicui/interactive-hover-button'
 import { OrbitingCircles } from '@/components/magicui/orbiting-circles'
 import { File, Settings, Search } from 'lucide-react'
-const aboutMe = `这 里 是 Geeki 的 博 客 ， 一 名 热 爱 旅 游 ， 音 乐 与 技 术 的 前 端 开 发 者 。`
+const aboutMe = `Hi! This is Geeki's blog, a front-end developer who loves traveling, music, and technology.`
 
 export default function Home() {
     return (
-        <div className="">
+        <div>
             <div className="flex items-center justify-center m-32">
                 <Image
                     isBlurred
@@ -22,10 +22,10 @@ export default function Home() {
                     <TextGenerateEffect words={aboutMe} />
                     <div className="flex mt-5 gap-4">
                         <InteractiveHoverButton>
-                            简历（中文）
+                            CV (English)
                         </InteractiveHoverButton>
                         <InteractiveHoverButton>
-                            CV (English)
+                            简历（中文）
                         </InteractiveHoverButton>
                     </div>
                 </div>
@@ -103,6 +103,8 @@ export default function Home() {
                     />
                 </OrbitingCircles>
             </div>
+
+            <div className="flex flex-col gap-10"></div>
         </div>
     )
 }
