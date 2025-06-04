@@ -4,21 +4,24 @@ import { TextGenerateEffect } from '@/components/ui/text-generate-effect'
 import { InteractiveHoverButton } from '@/components/magicui/interactive-hover-button'
 import { OrbitingCircles } from '@/components/magicui/orbiting-circles'
 import { File, Settings, Search } from 'lucide-react'
-const aboutMe = `Hi! This is Geeki's blog, a front-end developer who loves traveling, music, and technology.`
+import HeroImage from '@/components/hero-image'
+const aboutMe = `I am a front-end developer who loves traveling, music, and technology.`
 
 export default function Home() {
     return (
         <div>
-            <div className="flex items-center justify-center m-32">
-                <Image
+            <div className="relative flex justify-end">
+                {/* <Image
                     isBlurred
                     alt="HeroUI Album Cover"
                     className="m-5"
                     src="/image/my-avatar.jpg"
                     width={240}
-                />
-                <div className="ml-20">
-                    <p className="text-4xl font-bold">Welcome Geeki's blog!</p>
+                /> */}
+                <div className="absolute left-0 top-52">
+                    <p className="text-4xl font-bold">
+                        Hi 👋🏻! This is Geeki's blog
+                    </p>
                     <TextGenerateEffect words={aboutMe} />
                     <div className="flex mt-5 gap-4">
                         <InteractiveHoverButton>
@@ -28,6 +31,9 @@ export default function Home() {
                             简历（中文）
                         </InteractiveHoverButton>
                     </div>
+                </div>
+                <div className="relative w-3/4">
+                    <HeroImage />
                 </div>
             </div>
 
