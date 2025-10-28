@@ -1,0 +1,17 @@
+请将你的 favicon.ico 文件放在这个 public 目录下
+
+你可以：
+1. 使用在线工具生成 favicon: https://favicon.io/
+2. 将生成的 favicon.ico 文件放到 public 目录
+3. 或者在 app/[locale]/layout.tsx 中添加 metadata 配置
+
+示例 metadata 配置：
+export const metadata = {
+  icons: {
+    icon: '/favicon.ico',
+  },
+}
+
+
+
+

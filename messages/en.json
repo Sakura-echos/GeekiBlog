@@ -1,0 +1,44 @@
+{
+  "nav": {
+    "home": "Home",
+    "blog": "Blog",
+    "projects": "Projects"
+  },
+  "home": {
+    "greeting": "Hi, I'm",
+    "name": "Geeki",
+    "title": "Frontend Developer",
+    "description": "Welcome to my blog! I'm Geeki, passionate about exploring new technologies and things, always keeping a learning mindset.\n\nI can speak Mandarin, Cantonese, and basic English.\n\nBeyond programming, I'm also passionate about traveling. I've road-tripped across Xinjiang, Yunnan, and Guangxi in China - quite the experienced driver! Internationally, I've traveled with family or solo to Japan, South Korea, Thailand, Malaysia, and other countries.\nI enjoy street dancing (popping), love music (a piano beginner...), and watching movies.\nRecommended films: Interstellar, Good Will Hunting, The Truman Show.\nCurrently diving into reading. Recommended books: Conversations with God, The Power of Now, How to Read a Book.",
+    "skills": "Skills",
+    "experience": "Experience",
+    "experienceDes": "3+ years in web and app development, passionate about creating elegant user interfaces",
+    "contact": "Contact",
+    "cta": "Let's Build Something Amazing",
+    "ctaDes": "I'm always interested in hearing about new projects and opportunities.",
+    "getInTouch": "Get In Touch!"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Sharing technical insights and life reflections",
+    "readMore": "Read More",
+    "readTime": "min read",
+    "noArticles": "No articles yet"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "My open source projects and portfolio",
+    "viewDemo": "View Demo",
+    "viewCode": "View Code",
+    "noProjects": "No projects yet"
+  },
+  "theme": {
+    "light": "Light Mode",
+    "dark": "Dark Mode",
+    "toggle": "Toggle Theme"
+  },
+  "language": {
+    "zh": "中文",
+    "en": "English",
+    "toggle": "Toggle Language"
+  }
+}
