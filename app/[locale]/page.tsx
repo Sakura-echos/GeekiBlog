@@ -1,5 +1,7 @@
 import { useTranslations } from "next-intl";
 import { Code, Sparkles, Mail } from "lucide-react";
+import { TypingAnimation } from "@/components/magicui/typing-animation";
+import { CoolMode } from "@/components/magicui/cool-mode";
 
 /**
  * 首页组件
@@ -17,16 +19,23 @@ export default function HomePage() {
           <p className="text-lg md:text-xl text-text-secondary mb-2">
             {t("greeting")}
           </p>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-text-primary mb-4">
+          <TypingAnimation
+            duration={200}
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-text-primary mb-4"
+          >
             {t("name")}
-          </h1>
-          <p className="text-xl md:text-2xl text-text-secondary font-medium">
+          </TypingAnimation>
+          <TypingAnimation
+            delay={1500}
+            duration={200}
+            className="text-xl md:text-2xl text-text-secondary font-medium"
+          >
             {t("title")}
-          </p>
+          </TypingAnimation>
         </div>
 
         {/* 简介 */}
-        <p className="text-base md:text-lg text-left text-text-secondary leading-relaxed max-w-2xl mx-auto whitespace-pre-line">
+        <p className="text-lg text-left text-text-secondary leading-loose max-w-2xl mx-auto whitespace-pre-line">
           {t("description")}
         </p>
       </section>
@@ -81,12 +90,14 @@ export default function HomePage() {
             {t("cta")}
           </h2>
           <p className="text-text-secondary mb-6">{t("ctaDes")}</p>
-          <a
-            href="mailto:447061043@qq.com"
-            className="inline-flex items-center px-6 py-3 rounded-lg bg-text-primary text-background font-medium hover:opacity-90 transition-opacity"
-          >
-            {t("getInTouch")}
-          </a>
+          <CoolMode>
+            <a
+              href="mailto:447061043@qq.com"
+              className="inline-flex items-center px-6 py-3 rounded-lg bg-text-primary text-background font-medium hover:opacity-90 transition-opacity"
+            >
+              {t("getInTouch")}
+            </a>
+          </CoolMode>
         </div>
       </section>
     </div>
