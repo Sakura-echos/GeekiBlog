@@ -151,3 +151,131 @@ a {
     @apply bg-background text-foreground;
   }
 }
+
+/* Markdown prose 样式自定义 */
+@layer components {
+  .prose {
+    @apply max-w-none;
+  }
+
+  /* 标题样式 */
+  .prose h1 {
+    @apply text-4xl font-bold mb-6 mt-8 text-text-primary;
+  }
+
+  .prose h2 {
+    @apply text-3xl font-bold mb-4 mt-8 text-text-primary;
+  }
+
+  .prose h3 {
+    @apply text-2xl font-bold mb-3 mt-6 text-text-primary;
+  }
+
+  .prose h4 {
+    @apply text-xl font-semibold mb-2 mt-4 text-text-primary;
+  }
+
+  .prose h5,
+  .prose h6 {
+    @apply text-lg font-semibold mb-2 mt-4 text-text-primary;
+  }
+
+  /* 段落样式 */
+  .prose p {
+    @apply mb-4 leading-7 text-text-secondary;
+  }
+
+  /* 列表样式 */
+  .prose ul,
+  .prose ol {
+    @apply mb-4 ml-6 space-y-2;
+  }
+
+  .prose ul {
+    @apply list-disc;
+  }
+
+  .prose ol {
+    @apply list-decimal;
+  }
+
+  .prose li {
+    @apply text-text-secondary leading-7;
+  }
+
+  .prose li > p {
+    @apply mb-2;
+  }
+
+  /* 嵌套列表 */
+  .prose ul ul,
+  .prose ul ol,
+  .prose ol ul,
+  .prose ol ol {
+    @apply mt-2 mb-2;
+  }
+
+  /* 链接样式 */
+  .prose a {
+    @apply text-blue-600 hover:text-blue-700 underline;
+  }
+
+  .dark .prose a {
+    @apply text-blue-400 hover:text-blue-300;
+  }
+
+  /* 代码样式 */
+  .prose code {
+    @apply bg-background-secondary px-1.5 py-0.5 rounded text-sm font-mono text-text-primary;
+  }
+
+  .prose pre {
+    @apply bg-background-secondary p-4 rounded-lg overflow-x-auto mb-4;
+  }
+
+  .prose pre code {
+    @apply bg-transparent p-0;
+  }
+
+  /* 引用样式 */
+  .prose blockquote {
+    @apply border-l-4 border-text-secondary pl-4 italic my-4 text-text-secondary;
+  }
+
+  /* 分割线 */
+  .prose hr {
+    @apply border-border my-8;
+  }
+
+  /* 表格样式 */
+  .prose table {
+    @apply w-full border-collapse mb-4;
+  }
+
+  .prose th,
+  .prose td {
+    @apply border border-border px-4 py-2 text-left;
+  }
+
+  .prose th {
+    @apply bg-background-secondary font-semibold text-text-primary;
+  }
+
+  .prose td {
+    @apply text-text-secondary;
+  }
+
+  /* 图片样式 */
+  .prose img {
+    @apply rounded-lg shadow-md my-6;
+  }
+
+  /* 强调文本 */
+  .prose strong {
+    @apply font-bold text-text-primary;
+  }
+
+  .prose em {
+    @apply italic;
+  }
+}
