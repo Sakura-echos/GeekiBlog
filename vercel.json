@@ -1,0 +1,4 @@
+{
+  "includeFiles": ["lib/trip/**/*.md", "lib/trip/**/*.png", "lib/trip/**/*.jpg", "lib/trip/**/*.jpeg"]
+}
+

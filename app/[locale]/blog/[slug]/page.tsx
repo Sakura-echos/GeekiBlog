@@ -3,14 +3,13 @@ import { Calendar, Clock, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { blogPosts } from "@/lib/blog-data";
 import ReactMarkdown from "react-markdown";
-import { promises as fs } from "fs";
-import path from "path";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
 import Image from "next/image";
 import type { Components } from "react-markdown";
 import TableOfContents from "@/components/table-of-contents";
+import { loadMarkdownContent } from "@/lib/markdown-loader";
 /**
  * 博客文章详情页面
  * 显示单篇文章的完整内容
@@ -34,16 +33,13 @@ export default async function BlogPostPage({
 
   if (post.contentPath) {
     try {
-      const filePath = path.join(process.cwd(), post.contentPath);
-      markdownContent = await fs.readFile(filePath, "utf-8");
-
-      // 获取图片的基础路径
-      // 例如：lib/trip/泰国/泰国.md -> 泰国/
-      const contentDir = path.dirname(post.contentPath);
-      imageBasePath = contentDir.replace("lib/trip/", "");
+      const result = await loadMarkdownContent(post.contentPath);
+      markdownContent = result.content;
+      imageBasePath = result.imageBasePath;
     } catch (error) {
-      console.error("Error reading markdown file:", error);
-      markdownContent = post.excerpt;
+      console.error("Error loading markdown content:", error);
+      // 如果读取失败，使用摘要作为后备内容
+      markdownContent = `# ${post.title}\n\n${post.excerpt}\n\n> ⚠️ **内容加载失败**\n>\n> 文章内容暂时无法加载，请稍后重试。如果问题持续存在，请联系管理员。`;
     }
   } else {
     // 如果没有指定文件路径，使用默认内容
