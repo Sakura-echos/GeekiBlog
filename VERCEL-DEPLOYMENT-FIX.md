@@ -19,22 +19,21 @@
 
 我们实施了双保险策略：
 
-### 方案 A：Vercel 配置文件
+### 方案 A：Next.js 配置文件
 
-**文件：`vercel.json`**
+**文件：`next.config.js`**
 
-```json
-{
-  "includeFiles": [
-    "lib/trip/**/*.md",
-    "lib/trip/**/*.png",
-    "lib/trip/**/*.jpg",
-    "lib/trip/**/*.jpeg"
-  ]
+```javascript
+experimental: {
+  outputFileTracingIncludes: {
+    "/[locale]/blog/[slug]": ["./lib/trip/**/*"],
+  },
 }
 ```
 
-这确保所有 markdown 文件和图片被包含在 Vercel 部署中。
+✅ 使用 Next.js 的 `outputFileTracingIncludes` 配置
+✅ 告诉 Vercel 在部署博客详情页时包含 `lib/trip/` 目录
+✅ 这是官方推荐的方式，确保所有 markdown 和图片文件被包含
 
 ### 方案 B：专用 Markdown 加载器
 
