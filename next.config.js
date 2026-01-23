@@ -8,7 +8,7 @@ const nextConfig = {
   // 配置 Vercel 部署时包含的额外文件
   experimental: {
     outputFileTracingIncludes: {
-      "/[locale]/blog/[slug]": ["./lib/trip/**/*"],
+      "/[locale]/trip/[slug]": ["./lib/trip/**/*"],
     },
   },
 };
