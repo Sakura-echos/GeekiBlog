@@ -2,6 +2,7 @@
   "nav": {
     "home": "首页",
     "blog": "博客",
+    "trip": "旅行",
     "projects": "项目"
   },
   "home": {
@@ -20,6 +21,13 @@
   "blog": {
     "title": "博客",
     "subtitle": "分享技术见解与生活感悟",
+    "readMore": "阅读更多",
+    "readTime": "分钟阅读",
+    "noArticles": "暂无文章"
+  },
+  "trip": {
+    "title": "旅行",
+    "subtitle": "分享旅行经历与感悟",
     "readMore": "阅读更多",
     "readTime": "分钟阅读",
     "noArticles": "暂无文章"

@@ -1,18 +1,18 @@
 import { useTranslations } from "next-intl";
 import { MasonryGrid } from "@/components/masonry-grid";
 import { BlogCard } from "@/components/blog-card";
-import { blogPosts } from "@/lib/blog-data";
+import { tripPosts } from "@/lib/trip-data";
 
 /**
  * 博客列表页面
  * 使用瀑布流布局展示所有文章
  */
-export default function BlogPage({
+export default function TripPage({
   params: { locale },
 }: {
   params: { locale: string };
 }) {
-  const t = useTranslations("blog");
+  const t = useTranslations("trip");
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
@@ -27,11 +27,11 @@ export default function BlogPage({
       </div>
 
       {/* 文章列表 - 瀑布流布局 */}
-      {blogPosts.length > 0 ? (
+      {tripPosts.length > 0 ? (
         <MasonryGrid className="max-w-7xl mx-auto">
-          {blogPosts.map((post) => (
+          {tripPosts.map((post) => (
             <BlogCard
-              nav="blog"
+              nav="trip"
               key={post.slug}
               title={post.title}
               excerpt={post.excerpt}

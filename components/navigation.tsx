@@ -20,6 +20,7 @@ export function Navigation({ locale }: { locale: string }) {
   const navLinks = [
     { href: `/${locale}`, label: t("home") },
     { href: `/${locale}/blog`, label: t("blog") },
+    { href: `/${locale}/trip`, label: t("trip") },
     { href: `/${locale}/projects`, label: t("projects") },
   ];
 

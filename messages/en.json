@@ -2,6 +2,7 @@
   "nav": {
     "home": "Home",
     "blog": "Blog",
+    "trip": "Trip",
     "projects": "Projects"
   },
   "home": {
@@ -20,6 +21,13 @@
   "blog": {
     "title": "Blog",
     "subtitle": "Sharing technical insights and life reflections",
+    "readMore": "Read More",
+    "readTime": "min read",
+    "noArticles": "No articles yet"
+  },
+  "trip": {
+    "title": "Trip",
+    "subtitle": "Sharing travel experiences and reflections",
     "readMore": "Read More",
     "readTime": "min read",
     "noArticles": "No articles yet"

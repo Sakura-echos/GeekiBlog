@@ -3,6 +3,7 @@ import { Calendar, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface BlogCardProps {
+  nav: string;
   title: string;
   excerpt: string;
   date: string;
@@ -18,6 +19,7 @@ interface BlogCardProps {
  * 用于在瀑布流中展示文章预览
  */
 export function BlogCard({
+  nav,
   title,
   excerpt,
   date,
@@ -28,7 +30,7 @@ export function BlogCard({
   className,
 }: BlogCardProps) {
   return (
-    <Link href={`/${locale}/blog/${slug}`}>
+    <Link href={`/${locale}/${nav}/${slug}`}>
       <article
         className={cn(
           "group p-6 rounded-2xl border border-border bg-background-secondary",
