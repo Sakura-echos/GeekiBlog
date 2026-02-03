@@ -26,7 +26,6 @@ export const tripPosts: TripPost[] = [
     readTime: 20,
     tags: ["旅游", "泰国", "攻略"],
     contentPath: "lib/trip/泰国/泰国.md",
-    
   },
   {
     slug: "yunnan-trip",
@@ -40,10 +39,19 @@ export const tripPosts: TripPost[] = [
   {
     slug: "yunnan-trip",
     title: "广西（柳州-阳朔-龙脊梯田）",
-    excerpt: "记录我在广西的7行程和实用攻略。",
+    excerpt: "记录我在广西的7天行程和实用攻略。",
     date: "2022-10-19",
     readTime: 20,
     tags: ["旅游", "云南", "攻略"],
     contentPath: "lib/trip/中国/广西/柳州-阳朔-龙脊梯田.md",
+  },
+  {
+    slug: "jiangxi-trip",
+    title: "江西",
+    excerpt: "记录我在江西的7天行程和实用攻略。",
+    date: "2022-10-19",
+    readTime: 20,
+    tags: ["旅游", "江西", "攻略"],
+    contentPath: "lib/trip/中国/江西/江西之旅.md",
   },
 ];
