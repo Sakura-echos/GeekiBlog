@@ -54,4 +54,13 @@ export const tripPosts: TripPost[] = [
     tags: ["旅游", "江西", "攻略"],
     contentPath: "lib/trip/中国/江西/江西之旅.md",
   },
+  {
+    slug: "jiangzhehu-trip",
+    title: "江浙沪",
+    excerpt: "记录我在江浙沪的7天行程和实用攻略。",
+    date: "2025-10-09",
+    readTime: 20,
+    tags: ["旅游", "江浙沪", "攻略"],
+    contentPath: "lib/trip/中国/江浙沪/江浙沪之旅.md",
+  },
 ];
