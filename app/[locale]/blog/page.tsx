@@ -1,51 +1,63 @@
 import { useTranslations } from "next-intl";
 import { MasonryGrid } from "@/components/masonry-grid";
 import { BlogCard } from "@/components/blog-card";
-import { blogPosts } from "@/lib/blog-data";
+import { supabase } from "@/lib/supabase";
+import type { Article } from "@/lib/supabase";
 
-/**
- * 博客列表页面
- * 使用瀑布流布局展示所有文章
- */
-export default function BlogPage({
+export const dynamic = "force-dynamic";
+
+async function getPublishedArticles(): Promise<Article[]> {
+  const { data, error } = await supabase
+    .from("article")
+    .select("id, slug, title, excerpt, tags, read_time, created_at, published")
+    .eq("published", true)
+    .eq("category", "blog")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error("Failed to fetch articles:", error.message);
+    return [];
+  }
+  return (data ?? []) as Article[];
+}
+
+export default async function BlogPage({
   params: { locale },
 }: {
   params: { locale: string };
 }) {
-  const t = useTranslations("blog");
+  const articles = await getPublishedArticles();
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-      {/* 页面标题 */}
       <div className="max-w-4xl mx-auto text-center mb-12">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
-          {t("title")}
+          Blog
         </h1>
         <p className="text-base md:text-lg text-text-secondary">
-          {t("subtitle")}
+          Thoughts, stories and ideas.
         </p>
       </div>
 
-      {/* 文章列表 - 瀑布流布局 */}
-      {blogPosts.length > 0 ? (
+      {articles.length > 0 ? (
         <MasonryGrid className="max-w-7xl mx-auto">
-          {blogPosts.map((post) => (
+          {articles.map((article) => (
             <BlogCard
               nav="blog"
-              key={post.slug}
-              title={post.title}
-              excerpt={post.excerpt}
-              date={post.date}
-              readTime={post.readTime}
-              tags={post.tags}
-              slug={post.slug}
+              key={article.slug}
+              title={article.title}
+              excerpt={article.excerpt}
+              date={new Date(article.created_at).toLocaleDateString("zh-CN")}
+              readTime={article.read_time}
+              tags={article.tags ?? []}
+              slug={article.slug}
               locale={locale}
             />
           ))}
         </MasonryGrid>
       ) : (
         <div className="text-center py-20">
-          <p className="text-text-secondary">{t("noArticles")}</p>
+          <p className="text-text-secondary">No articles published yet.</p>
         </div>
       )}
     </div>
