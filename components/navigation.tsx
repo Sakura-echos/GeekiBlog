@@ -19,8 +19,7 @@ export function Navigation({ locale }: { locale: string }) {
   // 导航链接配置
   const navLinks = [
     { href: `/${locale}`, label: t("home") },
-    { href: `/${locale}/blog`, label: t("blog") },
-    { href: `/${locale}/trip`, label: t("trip") },
+    { href: `/${locale}/articles`, label: t("articles") },
     { href: `/${locale}/projects`, label: t("projects") },
   ];
 

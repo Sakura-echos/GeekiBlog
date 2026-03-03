@@ -53,9 +53,7 @@ export async function deleteArticle(id: string) {
 }
 
 function revalidateAllPaths() {
-  revalidatePath("/zh/blog");
-  revalidatePath("/en/blog");
-  revalidatePath("/zh/trip");
-  revalidatePath("/en/trip");
+  revalidatePath("/zh/articles");
+  revalidatePath("/en/articles");
   revalidatePath("/admin");
 }

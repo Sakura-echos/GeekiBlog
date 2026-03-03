@@ -1,8 +1,7 @@
 {
   "nav": {
     "home": "Home",
-    "blog": "Blog",
-    "trip": "Trip",
+    "articles": "Articles",
     "projects": "Projects"
   },
   "home": {
@@ -18,18 +17,10 @@
     "ctaDes": "I'm always interested in hearing about new projects and opportunities.",
     "getInTouch": "Get In Touch!"
   },
-  "blog": {
-    "title": "Blog",
-    "subtitle": "Sharing technical insights and life reflections",
-    "readMore": "Read More",
-    "readTime": "min read",
-    "noArticles": "No articles yet"
-  },
-  "trip": {
-    "title": "Trip",
-    "subtitle": "Sharing travel experiences and reflections",
-    "readMore": "Read More",
-    "readTime": "min read",
+  "articles": {
+    "title": "Articles",
+    "subtitle": "Blog, travel, photography — capturing every side of life",
+    "all": "All",
     "noArticles": "No articles yet"
   },
   "projects": {

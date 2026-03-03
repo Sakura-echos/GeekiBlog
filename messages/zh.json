@@ -1,8 +1,7 @@
 {
   "nav": {
     "home": "首页",
-    "blog": "博客",
-    "trip": "旅行",
+    "articles": "文章",
     "projects": "项目"
   },
   "home": {
@@ -18,18 +17,10 @@
     "ctaDes": "欢迎各种有意思的项目与公司联系我",
     "getInTouch": "联系我吧！"
   },
-  "blog": {
-    "title": "博客",
-    "subtitle": "分享技术见解与生活感悟",
-    "readMore": "阅读更多",
-    "readTime": "分钟阅读",
-    "noArticles": "暂无文章"
-  },
-  "trip": {
-    "title": "旅行",
-    "subtitle": "分享旅行经历与感悟",
-    "readMore": "阅读更多",
-    "readTime": "分钟阅读",
+  "articles": {
+    "title": "文章",
+    "subtitle": "博客、旅游、摄影，记录生活的每一面",
+    "all": "全部",
     "noArticles": "暂无文章"
   },
   "projects": {

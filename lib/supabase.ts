@@ -1,10 +1,16 @@
 import { createClient } from "@supabase/supabase-js";
 
 export const ARTICLE_CATEGORIES = [
-  { value: "blog", label: "博客" },
-  { value: "trip", label: "旅游" },
-  { value: "photography", label: "摄影" },
+  { value: "blog", label: "博客", labelEn: "Blog" },
+  { value: "trip", label: "旅游", labelEn: "Travel" },
+  { value: "photography", label: "摄影", labelEn: "Photography" },
 ] as const;
+
+export function getCategoryLabel(value: string, locale: string): string {
+  const cat = ARTICLE_CATEGORIES.find((c) => c.value === value);
+  if (!cat) return value;
+  return locale === "zh" ? cat.label : cat.labelEn;
+}
 
 export type ArticleCategory = (typeof ARTICLE_CATEGORIES)[number]["value"];
 
