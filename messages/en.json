@@ -2,6 +2,7 @@
   "nav": {
     "home": "Home",
     "articles": "Articles",
+    "resume": "Resume",
     "projects": "Projects"
   },
   "home": {
@@ -22,6 +23,15 @@
     "subtitle": "Blog, travel, photography — capturing every side of life",
     "all": "All",
     "noArticles": "No articles yet"
+  },
+  "resume": {
+    "title": "Resume",
+    "downloadZh": "Download CV (Chinese)",
+    "downloadEn": "Download CV (English)",
+    "skills": "Skills",
+    "workExperience": "Work Experience",
+    "projectExperience": "Project Experience",
+    "education": "Education"
   },
   "projects": {
     "title": "Projects",

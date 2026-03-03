@@ -2,6 +2,7 @@
   "nav": {
     "home": "首页",
     "articles": "文章",
+    "resume": "简历",
     "projects": "项目"
   },
   "home": {
@@ -22,6 +23,15 @@
     "subtitle": "博客、旅游、摄影，记录生活的每一面",
     "all": "全部",
     "noArticles": "暂无文章"
+  },
+  "resume": {
+    "title": "简历",
+    "downloadZh": "下载中文简历",
+    "downloadEn": "下载英文简历",
+    "skills": "技能",
+    "workExperience": "工作经历",
+    "projectExperience": "项目经历",
+    "education": "教育经历"
   },
   "projects": {
     "title": "项目",
