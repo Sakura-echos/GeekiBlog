@@ -29,6 +29,18 @@ export interface Article {
   updated_at: string;
 }
 
+export interface Comment {
+  id: string;
+  article_id: string;
+  user_name: string;
+  content: string;
+  created_at: string;
+}
+
+export interface ArticleWithComments extends Article {
+  comment: Comment[];
+}
+
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 

@@ -39,5 +39,20 @@
     "zh": "中文",
     "en": "English",
     "toggle": "Toggle Language"
+  },
+  "comments": {
+    "title": "Comments",
+    "empty": "No comments yet. Be the first to comment!",
+    "leaveComment": "Leave a Comment",
+    "namePlaceholder": "Your name",
+    "nameLabel": "Name",
+    "contentLabel": "Comment",
+    "contentPlaceholder": "Share your thoughts…",
+    "submit": "Post Comment",
+    "submitting": "Submitting…",
+    "success": "Comment posted!",
+    "errorName": "Please enter your name",
+    "errorContent": "Please write a comment",
+    "errorSubmit": "Failed to submit, please try again"
   }
 }

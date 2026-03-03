@@ -39,5 +39,20 @@
     "zh": "中文",
     "en": "English",
     "toggle": "切换语言"
+  },
+  "comments": {
+    "title": "评论",
+    "empty": "还没有评论，快来发表第一条吧！",
+    "leaveComment": "发表评论",
+    "namePlaceholder": "你的昵称",
+    "nameLabel": "昵称",
+    "contentLabel": "评论内容",
+    "contentPlaceholder": "写下你的想法…",
+    "submit": "发表评论",
+    "submitting": "提交中…",
+    "success": "评论发表成功！",
+    "errorName": "请输入昵称",
+    "errorContent": "请输入评论内容",
+    "errorSubmit": "提交失败，请稍后再试"
   }
 }

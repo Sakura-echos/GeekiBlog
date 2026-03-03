@@ -2,26 +2,51 @@ import { notFound } from "next/navigation";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { supabase, getCategoryLabel } from "@/lib/supabase";
-import type { Article } from "@/lib/supabase";
+import type { ArticleWithComments } from "@/lib/supabase";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
 import type { Components } from "react-markdown";
 import TableOfContents from "@/components/table-of-contents";
+import { CommentSection } from "@/components/comment-section";
 
 export const dynamic = "force-dynamic";
 
-async function getArticle(slug: string): Promise<Article | null> {
+/**
+ * ORM + 连表查询：一次请求同时取出文章及其所有评论。
+ * Supabase 通过外键关系自动推断嵌套 select 语法。
+ */
+async function getArticleWithComments(
+  slug: string
+): Promise<ArticleWithComments | null> {
   const { data, error } = await supabase
     .from("article")
-    .select("*")
+    .select(
+      `
+      *,
+      comment (
+        id,
+        article_id,
+        user_name,
+        content,
+        created_at
+      )
+    `
+    )
     .eq("slug", slug)
     .eq("published", true)
     .single();
 
   if (error) return null;
-  return data as Article;
+
+  // 评论按发布时间倒序排列（最新在前）
+  const result = data as ArticleWithComments;
+  result.comment = (result.comment ?? []).sort(
+    (a, b) =>
+      new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+  );
+  return result;
 }
 
 export default async function ArticlePostPage({
@@ -29,7 +54,7 @@ export default async function ArticlePostPage({
 }: {
   params: { locale: string; slug: string };
 }) {
-  const article = await getArticle(slug);
+  const article = await getArticleWithComments(slug);
   if (!article) notFound();
 
   const backHref = `/${locale}/articles?category=${article.category}`;
@@ -163,6 +188,14 @@ export default async function ArticlePostPage({
             {article.content}
           </ReactMarkdown>
         </div>
+
+        {/* 评论区 —— 连表查询取得的初始评论直接注入 */}
+        <CommentSection
+          articleId={article.id}
+          articleSlug={article.slug}
+          initialComments={article.comment}
+          locale={locale}
+        />
       </article>
     </div>
   );
