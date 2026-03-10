@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { Code, Sparkles, Mail } from "lucide-react";
 import { TypingAnimation } from "@/components/magicui/typing-animation";
 import { CoolMode } from "@/components/magicui/cool-mode";
+import { CTAPointer } from "@/components/magicui/cta-pointer";
 
 /**
  * 首页组件
@@ -85,7 +86,8 @@ export default function HomePage() {
 
       {/* CTA 区域 */}
       <section className="max-w-4xl mx-auto text-center">
-        <div className="p-8 md:p-12 rounded-3xl border border-border bg-background-secondary">
+        <div className="relative p-8 md:p-12 rounded-3xl border border-border bg-background-secondary">
+          <CTAPointer />
           <h2 className="text-2xl md:text-3xl font-bold text-text-primary mb-4">
             {t("cta")}
           </h2>
