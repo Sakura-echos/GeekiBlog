@@ -20,6 +20,7 @@ import {
 import { ARTICLE_CATEGORIES } from "@/lib/supabase";
 import type { Article, ArticleCategory } from "@/lib/supabase";
 import type { ArticleFormData } from "@/lib/actions";
+import { LogoutButton } from "@/components/admin/logout-button";
 
 interface ArticleEditorProps {
   article?: Article;
@@ -207,6 +208,8 @@ export function ArticleEditor({ article, onSave }: ArticleEditorProps) {
               {isSaving && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
               Publish
             </button>
+            <div className="w-px h-5 bg-[#eee]" />
+            <LogoutButton />
           </div>
         </div>
         {/* Mobile error */}

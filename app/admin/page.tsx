@@ -4,6 +4,7 @@ import { Calendar, Clock, PenLine, Plus } from "lucide-react";
 import { ARTICLE_CATEGORIES } from "@/lib/supabase";
 import type { Article } from "@/lib/supabase";
 import { DeleteArticleButton } from "@/components/admin/delete-button";
+import { LogoutButton } from "@/components/admin/logout-button";
 
 async function getArticles(): Promise<Article[]> {
   const supabase = createClient(
@@ -27,13 +28,16 @@ export default async function AdminPage() {
       <header className="sticky top-0 z-10 bg-white border-b border-[#eee] shadow-sm">
         <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
           <h1 className="text-lg font-bold text-[#333]">Geeki Admin</h1>
-          <Link
-            href="/admin/new"
-            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-[#333] text-white text-sm font-medium hover:bg-[#555] transition-colors"
-          >
-            <Plus className="w-4 h-4" />
-            New Article
-          </Link>
+          <div className="flex items-center gap-2">
+            <Link
+              href="/admin/new"
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-[#333] text-white text-sm font-medium hover:bg-[#555] transition-colors"
+            >
+              <Plus className="w-4 h-4" />
+              New Article
+            </Link>
+            <LogoutButton />
+          </div>
         </div>
       </header>
 
