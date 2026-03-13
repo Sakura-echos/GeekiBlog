@@ -1,8 +1,9 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { supabase, getCategoryLabel } from "@/lib/supabase";
-import type { ArticleWithComments } from "@/lib/supabase";
+import type { Article, ArticleWithComments } from "@/lib/supabase";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
@@ -12,6 +13,57 @@ import TableOfContents from "@/components/table-of-contents";
 import { CommentSection } from "@/components/comment-section";
 
 export const dynamic = "force-dynamic";
+
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.vercel.app";
+
+async function getArticleMeta(slug: string): Promise<Article | null> {
+  const { data } = await supabase
+    .from("article")
+    .select("id, slug, title, excerpt, tags, cover_image, created_at, updated_at, category")
+    .eq("slug", slug)
+    .eq("published", true)
+    .single();
+  return data as Article | null;
+}
+
+export async function generateMetadata({
+  params: { locale, slug },
+}: {
+  params: { locale: string; slug: string };
+}): Promise<Metadata> {
+  const article = await getArticleMeta(slug);
+  if (!article) return { title: "Not Found" };
+
+  const canonicalUrl = `${siteUrl}/${locale}/articles/${slug}`;
+  const images = article.cover_image
+    ? [{ url: article.cover_image, alt: article.title }]
+    : [];
+
+  return {
+    title: article.title,
+    description: article.excerpt,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: article.title,
+      description: article.excerpt,
+      type: "article",
+      url: canonicalUrl,
+      publishedTime: article.created_at,
+      modifiedTime: article.updated_at,
+      tags: article.tags ?? [],
+      images,
+    },
+    twitter: {
+      card: images.length > 0 ? "summary_large_image" : "summary",
+      title: article.title,
+      description: article.excerpt,
+      images: images.map((i) => i.url),
+    },
+  };
+}
 
 /**
  * ORM + 连表查询：一次请求同时取出文章及其所有评论。
@@ -128,8 +180,25 @@ export default async function ArticlePostPage({
     },
   };
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: article.title,
+    description: article.excerpt,
+    datePublished: article.created_at,
+    dateModified: article.updated_at,
+    author: { "@type": "Person", name: "Geeki" },
+    ...(article.cover_image && { image: article.cover_image }),
+    url: `${siteUrl}/${locale}/articles/${article.slug}`,
+    keywords: article.tags?.join(", "),
+  };
+
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 relative">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <TableOfContents content={article.content} />
 
       <article className="max-w-4xl mx-auto">

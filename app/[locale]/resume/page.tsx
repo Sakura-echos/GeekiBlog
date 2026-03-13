@@ -1,10 +1,36 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { getResumeAssetUrl, RESUME_ASSETS } from "@/lib/resume";
 import { ResumeAvatar } from "@/components/resume-avatar";
 import { resumeData } from "@/lib/resume-data";
 import type { ResumeLocale } from "@/lib/resume-data";
 
-export const dynamic = "force-dynamic";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.vercel.app";
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const isZh = locale === "zh";
+  return {
+    title: isZh ? "简历" : "Resume",
+    description: isZh
+      ? "黄梓杰的个人简历 — 前端开发工程师，3年港澳 Web / App 开发经验"
+      : "Zijie Huang's Resume — Frontend Developer with 3+ years of Web & App experience in HK/Macau",
+    alternates: {
+      canonical: `${siteUrl}/${locale}/resume`,
+    },
+    openGraph: {
+      title: isZh ? "简历 | Geeki's Blog" : "Resume | Geeki's Blog",
+      description: isZh
+        ? "黄梓杰的个人简历 — 前端开发工程师，3年港澳 Web / App 开发经验"
+        : "Zijie Huang's Resume — Frontend Developer with 3+ years of Web & App experience in HK/Macau",
+      url: `${siteUrl}/${locale}/resume`,
+    },
+  };
+}
 
 export default async function ResumePage({
   params: { locale },

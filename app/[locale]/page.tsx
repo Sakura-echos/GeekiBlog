@@ -1,8 +1,36 @@
+import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { Code, Sparkles, Mail } from "lucide-react";
 import { TypingAnimation } from "@/components/magicui/typing-animation";
 import { CoolMode } from "@/components/magicui/cool-mode";
 import { CTAPointer } from "@/components/magicui/cta-pointer";
+
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.vercel.app";
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const isZh = locale === "zh";
+  return {
+    title: isZh ? "首页" : "Home",
+    description: isZh
+      ? "你好，我是 Geeki，热爱技术、旅游与生活的前端开发工程师"
+      : "Hi, I'm Geeki — a frontend developer passionate about tech, travel & life",
+    alternates: {
+      canonical: `${siteUrl}/${locale}`,
+    },
+    openGraph: {
+      title: isZh ? "Geeki 的博客" : "Geeki's Blog",
+      description: isZh
+        ? "你好，我是 Geeki，热爱技术、旅游与生活的前端开发工程师"
+        : "Hi, I'm Geeki — a frontend developer passionate about tech, travel & life",
+      url: `${siteUrl}/${locale}`,
+    },
+  };
+}
 
 /**
  * 首页组件

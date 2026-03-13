@@ -1,7 +1,35 @@
+import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { MasonryGrid } from "@/components/masonry-grid";
 import { ProjectCard } from "@/components/project-card";
 import { projects } from "@/lib/project-data";
+
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.vercel.app";
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const isZh = locale === "zh";
+  return {
+    title: isZh ? "项目" : "Projects",
+    description: isZh
+      ? "我的开源项目与作品集"
+      : "My open source projects and portfolio",
+    alternates: {
+      canonical: `${siteUrl}/${locale}/projects`,
+    },
+    openGraph: {
+      title: isZh ? "项目 | Geeki's Blog" : "Projects | Geeki's Blog",
+      description: isZh
+        ? "我的开源项目与作品集"
+        : "My open source projects and portfolio",
+      url: `${siteUrl}/${locale}/projects`,
+    },
+  };
+}
 
 /**
  * 项目展示页面

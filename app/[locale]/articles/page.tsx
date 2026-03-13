@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { MasonryGrid } from "@/components/masonry-grid";
@@ -5,7 +6,35 @@ import { BlogCard } from "@/components/blog-card";
 import { supabase, ARTICLE_CATEGORIES, getCategoryLabel } from "@/lib/supabase";
 import type { Article } from "@/lib/supabase";
 
-export const dynamic = "force-dynamic";
+// Revalidate every 60 seconds (ISR) instead of force-dynamic
+export const revalidate = 60;
+
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.vercel.app";
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const isZh = locale === "zh";
+  return {
+    title: isZh ? "文章" : "Articles",
+    description: isZh
+      ? "博客、旅游、摄影，记录生活的每一面"
+      : "Blog, travel, photography — capturing every side of life",
+    alternates: {
+      canonical: `${siteUrl}/${locale}/articles`,
+    },
+    openGraph: {
+      title: isZh ? "文章 | Geeki's Blog" : "Articles | Geeki's Blog",
+      description: isZh
+        ? "博客、旅游、摄影，记录生活的每一面"
+        : "Blog, travel, photography — capturing every side of life",
+      url: `${siteUrl}/${locale}/articles`,
+    },
+  };
+}
 
 async function getArticles(category: string | null): Promise<Article[]> {
   let query = supabase

@@ -1,12 +1,28 @@
+import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Navigation } from "@/components/navigation";
 
-/**
- * 语言特定的布局组件
- * 为每个语言提供独立的布局和翻译上下文
- */
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.vercel.app";
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return {
+    alternates: {
+      languages: {
+        zh: `${siteUrl}/zh`,
+        en: `${siteUrl}/en`,
+        "x-default": `${siteUrl}/zh`,
+      },
+    },
+  };
+}
+
 export default async function LocaleLayout({
   children,
   params: { locale },
