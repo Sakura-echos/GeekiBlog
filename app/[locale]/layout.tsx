@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import { NavigationProgress } from "@/components/providers/navigation-progress";
 import { Navigation } from "@/components/navigation";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.com";
@@ -78,6 +79,8 @@ export default async function LocaleLayout({
         >
           {/* 国际化提供者 - 提供翻译功能 */}
           <NextIntlClientProvider messages={messages}>
+            {/* 页面切换进度条 */}
+            <NavigationProgress />
             {/* 导航栏 */}
             <Navigation locale={locale} />
 
