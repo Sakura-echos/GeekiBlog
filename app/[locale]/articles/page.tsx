@@ -11,6 +11,9 @@ export const revalidate = 60;
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.com";
 
+const SORT_OPTIONS = ["latest", "views"] as const;
+export type ArticleSort = (typeof SORT_OPTIONS)[number];
+
 export async function generateMetadata({
   params: { locale },
 }: {
@@ -46,7 +49,8 @@ function escapeIlike(q: string): string {
 
 async function getArticles(
   category: string | null,
-  searchQuery: string | undefined
+  searchQuery: string | undefined,
+  sort: ArticleSort
 ): Promise<Article[]> {
   if (!supabase) return [];
   let query = supabase
@@ -54,8 +58,13 @@ async function getArticles(
     .select(
       "id, slug, title, excerpt, tags, read_time, created_at, category, view_count"
     )
-    .eq("published", true)
-    .order("created_at", { ascending: false });
+    .eq("published", true);
+
+  if (sort === "views") {
+    query = query.order("view_count", { ascending: false });
+  } else {
+    query = query.order("created_at", { ascending: false });
+  }
 
   if (category) {
     query = query.eq("category", category);
@@ -77,12 +86,25 @@ async function getArticles(
   return (data ?? []) as Article[];
 }
 
+function buildQueryString(params: {
+  category?: string | null;
+  q?: string;
+  sort?: ArticleSort;
+}): string {
+  const sp = new URLSearchParams();
+  if (params.category) sp.set("category", params.category);
+  if (params.q) sp.set("q", params.q);
+  if (params.sort && params.sort !== "latest") sp.set("sort", params.sort);
+  const s = sp.toString();
+  return s ? `?${s}` : "";
+}
+
 export default async function ArticlesPage({
   params: { locale },
   searchParams,
 }: {
   params: { locale: string };
-  searchParams: { category?: string; q?: string };
+  searchParams: { category?: string; q?: string; sort?: string };
 }) {
   const t = await getTranslations("articles");
 
@@ -93,10 +115,17 @@ export default async function ArticlesPage({
       : null;
   const searchQ =
     typeof searchParams.q === "string" ? searchParams.q : undefined;
+  const activeSort: ArticleSort =
+    searchParams.sort === "views" ? "views" : "latest";
 
-  const articles = await getArticles(activeCategory, searchQ);
+  const articles = await getArticles(activeCategory, searchQ, activeSort);
 
   const searchBaseUrl = `/${locale}/articles`;
+  const queryString = buildQueryString({
+    category: activeCategory,
+    q: searchQ,
+    sort: activeSort,
+  });
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
@@ -127,6 +156,15 @@ export default async function ArticlesPage({
               aria-hidden
             />
           )}
+          {activeSort !== "latest" && (
+            <input
+              type="hidden"
+              name="sort"
+              value={activeSort}
+              readOnly
+              aria-hidden
+            />
+          )}
           <input
             type="search"
             name="q"
@@ -149,11 +187,11 @@ export default async function ArticlesPage({
         <div className="flex items-center gap-1 p-1 rounded-xl bg-background-secondary border border-border">
           {/* "All" tab */}
           <Link
-            href={
-              searchQ
-                ? `${searchBaseUrl}?q=${encodeURIComponent(searchQ)}`
-                : `${searchBaseUrl}`
-            }
+            href={`${searchBaseUrl}${buildQueryString({
+              category: null,
+              q: searchQ,
+              sort: activeSort,
+            })}`}
             className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${
               activeCategory === null
                 ? "bg-background text-text-primary shadow-sm"
@@ -167,11 +205,11 @@ export default async function ArticlesPage({
           {ARTICLE_CATEGORIES.map((cat) => (
             <Link
               key={cat.value}
-              href={
-                searchQ
-                  ? `${searchBaseUrl}?category=${cat.value}&q=${encodeURIComponent(searchQ)}`
-                  : `${searchBaseUrl}?category=${cat.value}`
-              }
+              href={`${searchBaseUrl}${buildQueryString({
+                category: cat.value,
+                q: searchQ,
+                sort: activeSort,
+              })}`}
               className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                 activeCategory === cat.value
                   ? "bg-background text-text-primary shadow-sm"
@@ -181,6 +219,40 @@ export default async function ArticlesPage({
               {getCategoryLabel(cat.value, locale)}
             </Link>
           ))}
+        </div>
+      </div>
+
+      {/* Sort: 最新发布 / 最多点击 */}
+      <div className="flex justify-center mb-10">
+        <div className="flex items-center gap-1 p-1 rounded-xl bg-background-secondary border border-border">
+          <Link
+            href={`${searchBaseUrl}${buildQueryString({
+              category: activeCategory,
+              q: searchQ,
+              sort: "latest",
+            })}`}
+            className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+              activeSort === "latest"
+                ? "bg-background text-text-primary shadow-sm"
+                : "text-text-secondary hover:text-text-primary"
+            }`}
+          >
+            {t("sortLatest")}
+          </Link>
+          <Link
+            href={`${searchBaseUrl}${buildQueryString({
+              category: activeCategory,
+              q: searchQ,
+              sort: "views",
+            })}`}
+            className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+              activeSort === "views"
+                ? "bg-background text-text-primary shadow-sm"
+                : "text-text-secondary hover:text-text-primary"
+            }`}
+          >
+            {t("sortViews")}
+          </Link>
         </div>
       </div>
 

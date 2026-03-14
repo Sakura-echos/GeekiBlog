@@ -24,6 +24,8 @@
     "all": "全部",
     "search": "搜索",
     "searchPlaceholder": "搜索标题或摘要…",
+    "sortLatest": "最新发布",
+    "sortViews": "最多点击",
     "noArticles": "暂无文章",
     "noSearchResults": "未找到匹配的文章"
   },

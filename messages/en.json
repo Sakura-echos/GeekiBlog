@@ -24,6 +24,8 @@
     "all": "All",
     "search": "Search",
     "searchPlaceholder": "Search title or excerpt…",
+    "sortLatest": "Latest",
+    "sortViews": "Most views",
     "noArticles": "No articles yet",
     "noSearchResults": "No matching articles"
   },
