@@ -52,6 +52,19 @@ export async function deleteArticle(id: string) {
   revalidateAllPaths();
 }
 
+/** Increment article view_count by slug (浏览人数 +1). Idempotent per request. */
+export async function incrementArticleViewCount(slug: string) {
+  const supabase = getAdminClient();
+  const { data: row, error: fetchError } = await supabase
+    .from("article")
+    .select("view_count")
+    .eq("slug", slug)
+    .single();
+  if (fetchError || !row) return;
+  const next = (row.view_count ?? 0) + 1;
+  await supabase.from("article").update({ view_count: next }).eq("slug", slug);
+}
+
 export async function addComment(
   articleId: string,
   articleSlug: string,

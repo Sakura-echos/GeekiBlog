@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Calendar, Clock, ArrowLeft } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, Eye } from "lucide-react";
 import Link from "next/link";
 import { supabase, getCategoryLabel } from "@/lib/supabase";
 import type { Article, ArticleWithComments } from "@/lib/supabase";
@@ -11,6 +11,7 @@ import rehypeSanitize from "rehype-sanitize";
 import type { Components } from "react-markdown";
 import TableOfContents from "@/components/table-of-contents";
 import { CommentSection } from "@/components/comment-section";
+import { IncrementArticleView } from "@/components/increment-article-view";
 
 export const dynamic = "force-dynamic";
 
@@ -192,6 +193,7 @@ export default async function ArticlePostPage({
       />
       <TableOfContents content={article.content} />
 
+      <IncrementArticleView slug={article.slug} />
       <article className="max-w-4xl mx-auto">
         {/* Back link - goes back to the article's category tab */}
         <Link
@@ -206,7 +208,7 @@ export default async function ArticlePostPage({
           {article.title}
         </h1>
 
-        <div className="flex items-center gap-6 text-sm text-text-secondary mb-8">
+        <div className="flex items-center gap-6 text-sm text-text-secondary mb-8 flex-wrap">
           <div className="flex items-center gap-2">
             <Calendar className="w-4 h-4" />
             <span>
@@ -219,6 +221,12 @@ export default async function ArticlePostPage({
             <Clock className="w-4 h-4" />
             <span>
               {article.read_time} {locale === "zh" ? "分钟阅读" : "min read"}
+            </span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Eye className="w-4 h-4" />
+            <span>
+              {article.view_count ?? 0} {locale === "zh" ? "浏览" : "views"}
             </span>
           </div>
         </div>

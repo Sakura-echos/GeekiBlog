@@ -39,7 +39,9 @@ async function getArticles(category: string | null): Promise<Article[]> {
   if (!supabase) return [];
   let query = supabase
     .from("article")
-    .select("id, slug, title, excerpt, tags, read_time, created_at, category")
+    .select(
+      "id, slug, title, excerpt, tags, read_time, created_at, category, view_count"
+    )
     .eq("published", true)
     .order("created_at", { ascending: false });
 
@@ -129,6 +131,7 @@ export default async function ArticlesPage({
                 locale === "zh" ? "zh-CN" : "en-US"
               )}
               readTime={article.read_time}
+              viewCount={article.view_count ?? 0}
               tags={article.tags ?? []}
               slug={article.slug}
               locale={locale}

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Calendar, Clock } from "lucide-react";
+import { Calendar, Clock, Eye } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface BlogCardProps {
@@ -8,6 +8,7 @@ interface BlogCardProps {
   excerpt: string;
   date: string;
   readTime: number;
+  viewCount?: number;
   tags: string[];
   slug: string;
   locale: string;
@@ -24,6 +25,7 @@ export function BlogCard({
   excerpt,
   date,
   readTime,
+  viewCount = 0,
   tags,
   slug,
   locale,
@@ -64,7 +66,7 @@ export function BlogCard({
         )}
 
         {/* 元信息 */}
-        <div className="flex items-center gap-4 text-xs text-text-light">
+        <div className="flex items-center gap-4 text-xs text-text-light flex-wrap">
           <div className="flex items-center gap-1">
             <Calendar className="w-3.5 h-3.5" />
             <span>{date}</span>
@@ -72,6 +74,10 @@ export function BlogCard({
           <div className="flex items-center gap-1">
             <Clock className="w-3.5 h-3.5" />
             <span>{readTime} min</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <Eye className="w-3.5 h-3.5" />
+            <span>{viewCount}</span>
           </div>
         </div>
       </article>

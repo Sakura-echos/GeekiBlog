@@ -27,6 +27,8 @@ export interface Article {
   cover_image: string | null;
   created_at: string;
   updated_at: string;
+  /** 浏览人数 (view count) */
+  view_count: number;
 }
 
 export interface Comment {
