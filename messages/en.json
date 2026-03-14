@@ -22,7 +22,10 @@
     "title": "Articles",
     "subtitle": "Blog, travel, photography — capturing every side of life",
     "all": "All",
-    "noArticles": "No articles yet"
+    "search": "Search",
+    "searchPlaceholder": "Search title or excerpt…",
+    "noArticles": "No articles yet",
+    "noSearchResults": "No matching articles"
   },
   "resume": {
     "title": "Resume",

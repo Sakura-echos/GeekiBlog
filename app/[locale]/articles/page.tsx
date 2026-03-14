@@ -35,7 +35,19 @@ export async function generateMetadata({
   };
 }
 
-async function getArticles(category: string | null): Promise<Article[]> {
+/** Escape ILIKE special chars: % and _ (and \ for escape). */
+function escapeIlike(q: string): string {
+  return q
+    .replace(/\\/g, "\\\\")
+    .replace(/%/g, "\\%")
+    .replace(/_/g, "\\_")
+    .trim();
+}
+
+async function getArticles(
+  category: string | null,
+  searchQuery: string | undefined
+): Promise<Article[]> {
   if (!supabase) return [];
   let query = supabase
     .from("article")
@@ -47,6 +59,14 @@ async function getArticles(category: string | null): Promise<Article[]> {
 
   if (category) {
     query = query.eq("category", category);
+  }
+
+  if (searchQuery) {
+    const term = escapeIlike(searchQuery);
+    if (term) {
+      const pattern = `%${term}%`;
+      query = query.or(`title.ilike.${pattern},excerpt.ilike.${pattern}`);
+    }
   }
 
   const { data, error } = await query;
@@ -62,7 +82,7 @@ export default async function ArticlesPage({
   searchParams,
 }: {
   params: { locale: string };
-  searchParams: { category?: string };
+  searchParams: { category?: string; q?: string };
 }) {
   const t = await getTranslations("articles");
 
@@ -71,8 +91,12 @@ export default async function ArticlesPage({
     searchParams.category && validValues.includes(searchParams.category)
       ? searchParams.category
       : null;
+  const searchQ =
+    typeof searchParams.q === "string" ? searchParams.q : undefined;
 
-  const articles = await getArticles(activeCategory);
+  const articles = await getArticles(activeCategory, searchQ);
+
+  const searchBaseUrl = `/${locale}/articles`;
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
@@ -86,12 +110,50 @@ export default async function ArticlesPage({
         </p>
       </div>
 
+      {/* Search */}
+      <div className="max-w-xl mx-auto mb-8">
+        <form
+          method="get"
+          action={searchBaseUrl}
+          className="flex gap-2"
+          role="search"
+        >
+          {activeCategory && (
+            <input
+              type="hidden"
+              name="category"
+              value={activeCategory}
+              readOnly
+              aria-hidden
+            />
+          )}
+          <input
+            type="search"
+            name="q"
+            defaultValue={searchQ ?? ""}
+            placeholder={t("searchPlaceholder")}
+            className="flex-1 px-4 py-2.5 rounded-xl border border-border bg-background text-text-primary placeholder:text-text-light focus:outline-none focus:ring-2 focus:ring-border focus:border-transparent"
+            aria-label={t("searchPlaceholder")}
+          />
+          <button
+            type="submit"
+            className="px-4 py-2.5 rounded-xl bg-background-secondary border border-border text-text-primary font-medium hover:bg-background transition-colors"
+          >
+            {t("search")}
+          </button>
+        </form>
+      </div>
+
       {/* Category tabs */}
       <div className="flex justify-center mb-10">
         <div className="flex items-center gap-1 p-1 rounded-xl bg-background-secondary border border-border">
           {/* "All" tab */}
           <Link
-            href={`/${locale}/articles`}
+            href={
+              searchQ
+                ? `${searchBaseUrl}?q=${encodeURIComponent(searchQ)}`
+                : `${searchBaseUrl}`
+            }
             className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${
               activeCategory === null
                 ? "bg-background text-text-primary shadow-sm"
@@ -105,7 +167,11 @@ export default async function ArticlesPage({
           {ARTICLE_CATEGORIES.map((cat) => (
             <Link
               key={cat.value}
-              href={`/${locale}/articles?category=${cat.value}`}
+              href={
+                searchQ
+                  ? `${searchBaseUrl}?category=${cat.value}&q=${encodeURIComponent(searchQ)}`
+                  : `${searchBaseUrl}?category=${cat.value}`
+              }
               className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                 activeCategory === cat.value
                   ? "bg-background text-text-primary shadow-sm"
@@ -140,7 +206,9 @@ export default async function ArticlesPage({
         </MasonryGrid>
       ) : (
         <div className="text-center py-20">
-          <p className="text-text-secondary">{t("noArticles")}</p>
+          <p className="text-text-secondary">
+            {searchQ ? t("noSearchResults") : t("noArticles")}
+          </p>
         </div>
       )}
     </div>

@@ -22,7 +22,10 @@
     "title": "文章",
     "subtitle": "博客、旅游、摄影，记录生活的每一面",
     "all": "全部",
-    "noArticles": "暂无文章"
+    "search": "搜索",
+    "searchPlaceholder": "搜索标题或摘要…",
+    "noArticles": "暂无文章",
+    "noSearchResults": "未找到匹配的文章"
   },
   "resume": {
     "title": "简历",
