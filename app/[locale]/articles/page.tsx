@@ -5,14 +5,16 @@ import { MasonryGrid } from "@/components/masonry-grid";
 import { BlogCard } from "@/components/blog-card";
 import { supabase, ARTICLE_CATEGORIES, getCategoryLabel } from "@/lib/supabase";
 import type { Article } from "@/lib/supabase";
+import {
+  buildArticlesQueryString,
+  type ArticleSort,
+} from "@/lib/articles-utils";
+import { ArticleSortSelect } from "@/components/article-sort-select";
 
 // Revalidate every 60 seconds (ISR) instead of force-dynamic
 export const revalidate = 60;
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.com";
-
-const SORT_OPTIONS = ["latest", "views"] as const;
-export type ArticleSort = (typeof SORT_OPTIONS)[number];
 
 export async function generateMetadata({
   params: { locale },
@@ -86,19 +88,6 @@ async function getArticles(
   return (data ?? []) as Article[];
 }
 
-function buildQueryString(params: {
-  category?: string | null;
-  q?: string;
-  sort?: ArticleSort;
-}): string {
-  const sp = new URLSearchParams();
-  if (params.category) sp.set("category", params.category);
-  if (params.q) sp.set("q", params.q);
-  if (params.sort && params.sort !== "latest") sp.set("sort", params.sort);
-  const s = sp.toString();
-  return s ? `?${s}` : "";
-}
-
 export default async function ArticlesPage({
   params: { locale },
   searchParams,
@@ -121,11 +110,6 @@ export default async function ArticlesPage({
   const articles = await getArticles(activeCategory, searchQ, activeSort);
 
   const searchBaseUrl = `/${locale}/articles`;
-  const queryString = buildQueryString({
-    category: activeCategory,
-    q: searchQ,
-    sort: activeSort,
-  });
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
@@ -182,78 +166,54 @@ export default async function ArticlesPage({
         </form>
       </div>
 
-      {/* Category tabs */}
-      <div className="flex justify-center mb-10">
-        <div className="flex items-center gap-1 p-1 rounded-xl bg-background-secondary border border-border">
-          {/* "All" tab */}
-          <Link
-            href={`${searchBaseUrl}${buildQueryString({
-              category: null,
-              q: searchQ,
-              sort: activeSort,
-            })}`}
-            className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-              activeCategory === null
-                ? "bg-background text-text-primary shadow-sm"
-                : "text-text-secondary hover:text-text-primary"
-            }`}
-          >
-            {t("all")}
-          </Link>
-
-          {/* Category tabs - driven by ARTICLE_CATEGORIES */}
-          {ARTICLE_CATEGORIES.map((cat) => (
+      {/* Category tabs + Sort dropdown (one row: 分类 | Sort by) */}
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-10 max-w-7xl mx-auto">
+        <div className="flex items-center gap-3">
+          <span className="text-sm font-medium text-text-secondary shrink-0">
+            {t("categoryLabel")}
+          </span>
+          <div className="flex items-center gap-1 p-1 rounded-xl bg-background-secondary border border-border">
             <Link
-              key={cat.value}
-              href={`${searchBaseUrl}${buildQueryString({
-                category: cat.value,
+              href={`${searchBaseUrl}${buildArticlesQueryString({
+                category: null,
                 q: searchQ,
                 sort: activeSort,
               })}`}
               className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-                activeCategory === cat.value
+                activeCategory === null
                   ? "bg-background text-text-primary shadow-sm"
                   : "text-text-secondary hover:text-text-primary"
               }`}
             >
-              {getCategoryLabel(cat.value, locale)}
+              {t("all")}
             </Link>
-          ))}
+            {ARTICLE_CATEGORIES.map((cat) => (
+              <Link
+                key={cat.value}
+                href={`${searchBaseUrl}${buildArticlesQueryString({
+                  category: cat.value,
+                  q: searchQ,
+                  sort: activeSort,
+                })}`}
+                className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                  activeCategory === cat.value
+                    ? "bg-background text-text-primary shadow-sm"
+                    : "text-text-secondary hover:text-text-primary"
+                }`}
+              >
+                {getCategoryLabel(cat.value, locale)}
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
-
-      {/* Sort: 最新发布 / 最多点击 */}
-      <div className="flex justify-center mb-10">
-        <div className="flex items-center gap-1 p-1 rounded-xl bg-background-secondary border border-border">
-          <Link
-            href={`${searchBaseUrl}${buildQueryString({
-              category: activeCategory,
-              q: searchQ,
-              sort: "latest",
-            })}`}
-            className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-              activeSort === "latest"
-                ? "bg-background text-text-primary shadow-sm"
-                : "text-text-secondary hover:text-text-primary"
-            }`}
-          >
-            {t("sortLatest")}
-          </Link>
-          <Link
-            href={`${searchBaseUrl}${buildQueryString({
-              category: activeCategory,
-              q: searchQ,
-              sort: "views",
-            })}`}
-            className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-              activeSort === "views"
-                ? "bg-background text-text-primary shadow-sm"
-                : "text-text-secondary hover:text-text-primary"
-            }`}
-          >
-            {t("sortViews")}
-          </Link>
-        </div>
+        <ArticleSortSelect
+          activeSort={activeSort}
+          activeCategory={activeCategory}
+          searchQ={searchQ}
+          sortByLabel={t("sortBy")}
+          sortLatestLabel={t("sortLatest")}
+          sortViewsLabel={t("sortViews")}
+        />
       </div>
 
       {/* Articles grid */}
