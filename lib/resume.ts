@@ -3,6 +3,10 @@ import { supabase } from "@/lib/supabase";
 const BUCKET = "resume-file";
 
 export function getResumeAssetUrl(path: string): string {
+  if (!supabase) {
+    const base = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
+    return `${base}/storage/v1/object/public/${BUCKET}/${path}`;
+  }
   const { data } = supabase.storage.from(BUCKET).getPublicUrl(path);
   return data.publicUrl;
 }

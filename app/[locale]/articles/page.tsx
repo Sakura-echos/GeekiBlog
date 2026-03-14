@@ -37,6 +37,7 @@ export async function generateMetadata({
 }
 
 async function getArticles(category: string | null): Promise<Article[]> {
+  if (!supabase) return [];
   let query = supabase
     .from("article")
     .select("id, slug, title, excerpt, tags, read_time, created_at, category")

@@ -18,6 +18,7 @@ const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.vercel.app";
 
 async function getArticleMeta(slug: string): Promise<Article | null> {
+  if (!supabase) return null;
   const { data } = await supabase
     .from("article")
     .select(
@@ -74,6 +75,7 @@ export async function generateMetadata({
 async function getArticleWithComments(
   slug: string
 ): Promise<ArticleWithComments | null> {
+  if (!supabase) return null;
   const { data, error } = await supabase
     .from("article")
     .select(

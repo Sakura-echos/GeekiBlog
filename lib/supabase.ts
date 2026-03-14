@@ -1,4 +1,4 @@
-import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
 export const ARTICLE_CATEGORIES = [
   { value: "blog", label: "博客", labelEn: "Blog" },
@@ -41,7 +41,17 @@ export interface ArticleWithComments extends Article {
   comment: Comment[];
 }
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-export const supabase = createClient(supabaseUrl!, supabaseAnonKey!);
+/** Supabase client; null when env vars are missing (e.g. CI build). Use getSupabase() in app code that requires it. */
+export const supabase: SupabaseClient | null =
+  supabaseUrl && supabaseAnonKey
+    ? createClient(supabaseUrl, supabaseAnonKey)
+    : null;
+
+/** Use in routes/pages that run with env configured. Throws if Supabase is not configured. */
+export function getSupabase(): SupabaseClient {
+  if (!supabase) throw new Error("Supabase is not configured");
+  return supabase;
+}

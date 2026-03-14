@@ -28,11 +28,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
   );
 
-  // Dynamic article pages
-  const { data: articles } = await supabase
-    .from("article")
-    .select("slug, updated_at")
-    .eq("published", true);
+  // Dynamic article pages (skip when Supabase env is missing, e.g. CI build)
+  const articles = supabase
+    ? (
+        await supabase
+          .from("article")
+          .select("slug, updated_at")
+          .eq("published", true)
+      ).data
+    : null;
 
   const articleRoutes: MetadataRoute.Sitemap = locales.flatMap((locale) =>
     (articles ?? []).map((article) => ({
