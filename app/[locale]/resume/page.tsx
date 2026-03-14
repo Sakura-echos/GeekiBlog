@@ -5,8 +5,7 @@ import { ResumeAvatar } from "@/components/resume-avatar";
 import { resumeData } from "@/lib/resume-data";
 import type { ResumeLocale } from "@/lib/resume-data";
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.com";
 
 export async function generateMetadata({
   params: { locale },

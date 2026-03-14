@@ -9,8 +9,7 @@ import type { Article } from "@/lib/supabase";
 // Revalidate every 60 seconds (ISR) instead of force-dynamic
 export const revalidate = 60;
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.com";
 
 export async function generateMetadata({
   params: { locale },

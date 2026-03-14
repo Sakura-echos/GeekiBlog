@@ -5,8 +5,7 @@ import { TypingAnimation } from "@/components/magicui/typing-animation";
 import { CoolMode } from "@/components/magicui/cool-mode";
 import { CTAPointer } from "@/components/magicui/cta-pointer";
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.com";
 
 export async function generateMetadata({
   params: { locale },

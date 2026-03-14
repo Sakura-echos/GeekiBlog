@@ -4,8 +4,7 @@ import { MasonryGrid } from "@/components/masonry-grid";
 import { ProjectCard } from "@/components/project-card";
 import { projects } from "@/lib/project-data";
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.com";
 
 export async function generateMetadata({
   params: { locale },

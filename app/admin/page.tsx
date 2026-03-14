@@ -13,7 +13,9 @@ async function getArticles(): Promise<Article[]> {
   );
   const { data, error } = await supabase
     .from("article")
-    .select("id, title, slug, published, created_at, read_time, excerpt, category")
+    .select(
+      "id, title, slug, published, created_at, read_time, excerpt, category"
+    )
     .order("created_at", { ascending: false });
   if (error) throw new Error(error.message);
   return (data ?? []) as Article[];
@@ -81,7 +83,9 @@ export default async function AdminPage() {
                       <p className="text-sm text-[#999] mt-0.5 truncate flex items-center gap-2">
                         <span>/{article.slug}</span>
                         <span className="shrink-0 text-xs px-1.5 py-0.5 rounded bg-[#f0f0f0] text-[#666]">
-                          {ARTICLE_CATEGORIES.find((c) => c.value === article.category)?.label ?? article.category}
+                          {ARTICLE_CATEGORIES.find(
+                            (c) => c.value === article.category
+                          )?.label ?? article.category}
                         </span>
                       </p>
                     </div>

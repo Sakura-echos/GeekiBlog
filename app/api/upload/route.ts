@@ -17,7 +17,10 @@ export async function POST(req: NextRequest) {
   }
 
   if (!file.type.startsWith("image/")) {
-    return NextResponse.json({ error: "Only images are allowed" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Only images are allowed" },
+      { status: 400 }
+    );
   }
 
   const ext = file.name.split(".").pop() ?? "png";
