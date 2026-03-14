@@ -7,7 +7,7 @@
 ## 1. 全局站点信息（`app/layout.tsx`）
 
 - **站点基础 Metadata**
-  - 配置 `metadataBase`，使用环境变量 `NEXT_PUBLIC_SITE_URL`，默认 `https://geekiblog.vercel.app`。
+  - 配置 `metadataBase`，使用环境变量 `NEXT_PUBLIC_SITE_URL`，默认 `https://geekiblog.com`。
   - 设置全局标题模板：
     - `title.default`: `Geeki's Blog`
     - `title.template`: `"%s | Geeki's Blog"`

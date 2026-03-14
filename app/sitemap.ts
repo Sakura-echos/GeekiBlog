@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { supabase } from "@/lib/supabase";
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.com";
 
 const locales = ["zh", "en"];
 

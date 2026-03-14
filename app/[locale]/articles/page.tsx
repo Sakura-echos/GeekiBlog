@@ -10,7 +10,7 @@ import type { Article } from "@/lib/supabase";
 export const revalidate = 60;
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.com";
 
 export async function generateMetadata({
   params: { locale },

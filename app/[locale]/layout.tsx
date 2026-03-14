@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Navigation } from "@/components/navigation";
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.com";
 
 export async function generateMetadata({
   params: { locale },

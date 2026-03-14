@@ -15,7 +15,7 @@ import { CommentSection } from "@/components/comment-section";
 export const dynamic = "force-dynamic";
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.com";
 
 async function getArticleMeta(slug: string): Promise<Article | null> {
   if (!supabase) return null;
