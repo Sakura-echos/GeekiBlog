@@ -32,7 +32,9 @@ async function uploadImageToServer(file: File): Promise<string> {
   formData.append("file", file);
   const res = await fetch("/api/upload", { method: "POST", body: formData });
   if (!res.ok) {
-    const { error } = await res.json().catch(() => ({ error: "Upload failed" }));
+    const { error } = await res
+      .json()
+      .catch(() => ({ error: "Upload failed" }));
     throw new Error(error ?? "Upload failed");
   }
   const { url } = await res.json();
@@ -83,7 +85,11 @@ export function ArticleEditor({ article, onSave }: ArticleEditorProps) {
       const end = textarea.selectionEnd;
       const selected = content.slice(start, end) || placeholder;
       const next =
-        content.slice(0, start) + before + selected + after + content.slice(end);
+        content.slice(0, start) +
+        before +
+        selected +
+        after +
+        content.slice(end);
       setContent(next);
       setTimeout(() => {
         textarea.focus();
@@ -104,7 +110,9 @@ export function ArticleEditor({ article, onSave }: ArticleEditorProps) {
         const markdown = urls.map((url) => `![image](${url})`).join("\n");
         insertAtCursor(markdown);
       } catch (err: unknown) {
-        setSaveError(err instanceof Error ? err.message : "Image upload failed");
+        setSaveError(
+          err instanceof Error ? err.message : "Image upload failed"
+        );
       } finally {
         setIsUploading(false);
       }
@@ -278,7 +286,9 @@ export function ArticleEditor({ article, onSave }: ArticleEditorProps) {
                 <button
                   className={toolbarBtn}
                   title="Link"
-                  onClick={() => insertAtCursor("[", "](https://)", "link text")}
+                  onClick={() =>
+                    insertAtCursor("[", "](https://)", "link text")
+                  }
                 >
                   <Link2 className="w-4 h-4" />
                 </button>
@@ -292,9 +302,7 @@ export function ArticleEditor({ article, onSave }: ArticleEditorProps) {
                 <button
                   className={toolbarBtn}
                   title="Code block"
-                  onClick={() =>
-                    insertAtCursor("```\n", "\n```", "code block")
-                  }
+                  onClick={() => insertAtCursor("```\n", "\n```", "code block")}
                 >
                   <span className="text-xs font-mono font-bold">{"{ }"}</span>
                 </button>

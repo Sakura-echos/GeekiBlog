@@ -20,7 +20,9 @@ const siteUrl =
 async function getArticleMeta(slug: string): Promise<Article | null> {
   const { data } = await supabase
     .from("article")
-    .select("id, slug, title, excerpt, tags, cover_image, created_at, updated_at, category")
+    .select(
+      "id, slug, title, excerpt, tags, cover_image, created_at, updated_at, category"
+    )
     .eq("slug", slug)
     .eq("published", true)
     .single();
@@ -135,10 +137,7 @@ export default async function ArticlePostPage({
       );
     },
     h1: ({ children, ...props }) => {
-      const id = generateHeadingId(
-        children?.toString() ?? "",
-        headingIndex++
-      );
+      const id = generateHeadingId(children?.toString() ?? "", headingIndex++);
       return (
         <h1 id={id} {...props}>
           {children}
@@ -146,10 +145,7 @@ export default async function ArticlePostPage({
       );
     },
     h2: ({ children, ...props }) => {
-      const id = generateHeadingId(
-        children?.toString() ?? "",
-        headingIndex++
-      );
+      const id = generateHeadingId(children?.toString() ?? "", headingIndex++);
       return (
         <h2 id={id} {...props}>
           {children}
@@ -157,10 +153,7 @@ export default async function ArticlePostPage({
       );
     },
     h3: ({ children, ...props }) => {
-      const id = generateHeadingId(
-        children?.toString() ?? "",
-        headingIndex++
-      );
+      const id = generateHeadingId(children?.toString() ?? "", headingIndex++);
       return (
         <h3 id={id} {...props}>
           {children}
@@ -168,10 +161,7 @@ export default async function ArticlePostPage({
       );
     },
     h4: ({ children, ...props }) => {
-      const id = generateHeadingId(
-        children?.toString() ?? "",
-        headingIndex++
-      );
+      const id = generateHeadingId(children?.toString() ?? "", headingIndex++);
       return (
         <h4 id={id} {...props}>
           {children}
@@ -227,8 +217,7 @@ export default async function ArticlePostPage({
           <div className="flex items-center gap-2">
             <Clock className="w-4 h-4" />
             <span>
-              {article.read_time}{" "}
-              {locale === "zh" ? "分钟阅读" : "min read"}
+              {article.read_time} {locale === "zh" ? "分钟阅读" : "min read"}
             </span>
           </div>
         </div>
