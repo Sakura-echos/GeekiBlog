@@ -33,6 +33,28 @@ export default async function LocaleLayout({
   // 获取当前语言的翻译消息
   const messages = await getMessages();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
+        url: siteUrl,
+        name: "Geeki's Blog",
+        description:
+          "Geeki 的博客 — 前端开发、旅游与生活 | Geeki's Blog: tech, travel & life",
+        publisher: { "@id": `${siteUrl}/#person` },
+        inLanguage: ["zh", "en"],
+      },
+      {
+        "@type": "Person",
+        "@id": `${siteUrl}/#person`,
+        name: "Geeki",
+        url: siteUrl,
+      },
+    ],
+  };
+
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
@@ -40,6 +62,11 @@ export default async function LocaleLayout({
         <link
           rel="icon"
           href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📝</text></svg>"
+        />
+        {/* 结构化数据：便于搜索引擎识别站点与 Geeki 品牌 */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body>
