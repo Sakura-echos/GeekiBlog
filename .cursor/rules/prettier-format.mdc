@@ -1,0 +1,19 @@
+---
+description: Format all generated code according to project Prettier config
+alwaysApply: true
+---
+
+# Code Formatting (Prettier)
+
+When generating or editing code, follow the project's Prettier configuration (`.prettierrc`):
+
+- **Semicolons**: use `true` (always add semicolons)
+- **Trailing commas**: `"es5"` (trailing commas where valid in ES5: objects, arrays, etc.)
+- **Quotes**: double quotes for JS/TS/JSON (`singleQuote: false`); double quotes in JSX (`jsxSingleQuote: false`)
+- **Line width**: wrap at **80** characters (`printWidth: 80`)
+- **Indent**: 2 spaces, no tabs (`tabWidth: 2`, `useTabs: false`)
+- **Arrow functions**: always parentheses around single param (`arrowParens: "always"`)
+- **Object literals**: space inside braces (`bracketSpacing: true`)
+- **Line endings**: `auto` (respect existing in file / OS default)
+
+Apply these rules to every file you create or modify so generated code matches `npm run format` / editor format-on-save.
