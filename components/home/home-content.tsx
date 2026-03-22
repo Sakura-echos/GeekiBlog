@@ -100,7 +100,7 @@ export default function HomeContent() {
                     words={[
                       "前端工程师",
                       "全栈开发者",
-                      "旅行爱好者",
+                      // "旅行爱好者",
                       "终身学习者",
                     ]}
                     className="font-semibold text-foreground"
@@ -181,11 +181,11 @@ export default function HomeContent() {
       {/* ===== Stats Section ===== */}
       <section className="py-20">
         <div className="container mx-auto max-w-4xl px-6">
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
             {[
               { value: 3, label: "年开发经验", suffix: "+" },
               { value: 10, label: "国家旅行", suffix: "+" },
-              { value: 1, label: "开源项目", suffix: "" },
+              // { value: 1, label: "开源项目", suffix: "" },
               { value: 100, label: "代码热情", suffix: "%" },
             ].map((stat, i) => (
               <BlurFade key={stat.label} delay={0.1 * i}>
