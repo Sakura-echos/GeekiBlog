@@ -2,7 +2,7 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   // 启用深色模式，使用 class 策略
-  darkMode: ["class", "class"],
+  darkMode: ["class"],
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -84,8 +84,7 @@ const config: Config = {
       animation: {
         marquee: "marquee var(--duration) infinite linear",
         "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
-        "border-beam":
-          "border-beam calc(var(--duration)*1s) infinite linear",
+        "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
       },
     },
   },
