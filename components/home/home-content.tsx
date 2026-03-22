@@ -60,7 +60,7 @@ export default function HomeContent() {
         </div>
 
         <div className="container relative z-10 mx-auto max-w-7xl px-6">
-          <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-[42%_58%]">
+          <div className="grid grid-cols-1 items-center gap-0 lg:grid-cols-[42%_58%]">
             {/* Left: text content */}
             <div>
               <BlurFade delay={0.1}>
@@ -168,7 +168,7 @@ export default function HomeContent() {
             {/* Right: hero image */}
             <BlurFade delay={0.4}>
               <div className="hidden items-center lg:flex">
-                <div className="relative w-[120%] -mr-16 opacity-90 dark:opacity-60 dark:[filter:brightness(1.1)_contrast(0.9)]">
+                <div className="relative w-[120%] -ml-16 -mr-16 opacity-90 dark:opacity-60 dark:[filter:brightness(1.1)_contrast(0.9)]">
                   <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-purple-500/10 via-blue-500/10 to-pink-500/10 blur-2xl" />
                   <HeroImage />
                 </div>
