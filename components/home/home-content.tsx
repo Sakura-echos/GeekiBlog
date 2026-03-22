@@ -9,6 +9,7 @@ import { BorderBeam } from "@/components/magicui/border-beam";
 import { Marquee } from "@/components/magicui/marquee";
 import { BoxReveal } from "@/components/magicui/box-reveal";
 import { CoolMode } from "@/components/magicui/cool-mode";
+import HeroImage from "@/components/hero-image";
 import {
   Code,
   BookOpen,
@@ -51,109 +52,129 @@ export default function HomeContent() {
   return (
     <div className="relative">
       {/* ===== Hero Section ===== */}
-      <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden">
+      <section className="relative flex min-h-[90vh] items-center">
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-blue-950/20" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.15),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
           <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(0,0,0,0.06)_1px,transparent_1px)] bg-[size:24px_24px] dark:bg-[radial-gradient(circle,rgba(255,255,255,0.04)_1px,transparent_1px)]" />
         </div>
 
-        <div className="container relative z-10 mx-auto max-w-4xl px-6 text-center">
-          <BlurFade delay={0.1}>
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/80 px-4 py-1.5 text-sm backdrop-blur-sm">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
-              </span>
-              正在寻找新的工作机会
-            </div>
-          </BlurFade>
+        <div className="container relative z-10 mx-auto max-w-7xl px-6">
+          <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-[42%_58%]">
+            {/* Left: text content */}
+            <div>
+              <BlurFade delay={0.1}>
+                <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/80 px-4 py-1.5 text-sm backdrop-blur-sm">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+                  </span>
+                  正在寻找新的工作机会
+                </div>
+              </BlurFade>
 
-          <BlurFade delay={0.2}>
-            <TypingAnimation
-              className="mb-3 text-lg font-normal leading-normal tracking-normal text-muted-foreground md:text-xl"
-              duration={80}
-            >
-              你好，欢迎来到我的博客 👋
-            </TypingAnimation>
-          </BlurFade>
-
-          <BlurFade delay={0.5}>
-            <h1 className="mb-4 text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl">
-              我是{" "}
-              <SparklesText>
-                <span className="bg-gradient-to-r from-purple-600 via-blue-500 to-pink-500 bg-clip-text text-transparent">
-                  Geeki
-                </span>
-              </SparklesText>
-            </h1>
-          </BlurFade>
-
-          <BlurFade delay={0.7}>
-            <div className="mb-6 flex items-center justify-center gap-2 text-xl text-muted-foreground md:text-2xl">
-              <Code className="h-5 w-5 text-purple-500" />
-              <WordRotate
-                words={["前端工程师", "全栈开发者", "旅行爱好者", "终身学习者"]}
-                className="font-semibold text-foreground"
-              />
-            </div>
-          </BlurFade>
-
-          <BlurFade delay={0.9}>
-            <p className="mx-auto mb-10 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-              拥有 3 年前端开发经验，热爱技术、旅游与生活。
-              <br className="hidden sm:block" />
-              用代码构建美好事物，用脚步丈量广阔世界。
-            </p>
-          </BlurFade>
-
-          <BlurFade delay={1.1}>
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <CoolMode>
-                <a
-                  href="https://github.com/Sakura-echos/GeekiBlog.git"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-purple-600 to-blue-500 px-7 py-3 text-sm font-medium text-white transition-all hover:scale-105 hover:shadow-xl hover:shadow-purple-500/25"
+              <BlurFade delay={0.2}>
+                <TypingAnimation
+                  className="mb-3 text-lg font-normal leading-normal tracking-normal text-muted-foreground md:text-xl"
+                  duration={80}
                 >
-                  <Github className="h-4 w-4" />
-                  查看源码
-                  <div className="absolute inset-0 -z-10 bg-gradient-to-r from-purple-600 to-blue-500 opacity-0 blur-xl transition-opacity group-hover:opacity-50" />
-                </a>
-              </CoolMode>
-              <a
-                href="#about"
-                className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/80 px-7 py-3 text-sm font-medium backdrop-blur-sm transition-all hover:scale-105 hover:border-purple-300 hover:shadow-lg dark:hover:border-purple-600"
-              >
-                了解更多
-                <ChevronDown className="h-3.5 w-3.5" />
-              </a>
-            </div>
-          </BlurFade>
+                  你好，欢迎来到我的博客 👋
+                </TypingAnimation>
+              </BlurFade>
 
-          <BlurFade delay={1.6}>
-            <motion.div
-              className="mt-20 flex justify-center"
-              animate={{ y: [0, 8, 0] }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            >
-              <div className="flex h-8 w-5 items-start justify-center rounded-full border-2 border-muted-foreground/30 p-1">
+              <BlurFade delay={0.5}>
+                <h1 className="mb-4 text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl">
+                  我是{" "}
+                  <SparklesText>
+                    <span className="bg-gradient-to-r from-purple-600 via-blue-500 to-pink-500 bg-clip-text text-transparent">
+                      Geeki
+                    </span>
+                  </SparklesText>
+                </h1>
+              </BlurFade>
+
+              <BlurFade delay={0.7}>
+                <div className="mb-6 flex items-center justify-start gap-2 text-xl text-muted-foreground md:text-2xl">
+                  <Code className="h-5 w-5 text-purple-500" />
+                  <WordRotate
+                    words={[
+                      "前端工程师",
+                      "全栈开发者",
+                      "旅行爱好者",
+                      "终身学习者",
+                    ]}
+                    className="font-semibold text-foreground"
+                  />
+                </div>
+              </BlurFade>
+
+              <BlurFade delay={0.9}>
+                <p className="mb-10 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+                  拥有 3 年前端开发经验，热爱技术、旅游与生活。
+                  <br className="hidden sm:block" />
+                  用代码构建美好事物，用脚步丈量广阔世界。
+                </p>
+              </BlurFade>
+
+              <BlurFade delay={1.1}>
+                <div className="flex flex-wrap items-center justify-start gap-4">
+                  <CoolMode>
+                    <a
+                      href="https://github.com/Sakura-echos/GeekiBlog.git"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-purple-600 to-blue-500 px-7 py-3 text-sm font-medium text-white transition-all hover:scale-105 hover:shadow-xl hover:shadow-purple-500/25"
+                    >
+                      <Github className="h-4 w-4" />
+                      查看源码
+                      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-purple-600 to-blue-500 opacity-0 blur-xl transition-opacity group-hover:opacity-50" />
+                    </a>
+                  </CoolMode>
+                  <a
+                    href="#about"
+                    className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/80 px-7 py-3 text-sm font-medium backdrop-blur-sm transition-all hover:scale-105 hover:border-purple-300 hover:shadow-lg dark:hover:border-purple-600"
+                  >
+                    了解更多
+                    <ChevronDown className="h-3.5 w-3.5" />
+                  </a>
+                </div>
+              </BlurFade>
+
+              <BlurFade delay={1.6}>
                 <motion.div
-                  className="h-1.5 w-1.5 rounded-full bg-muted-foreground/50"
+                  className="mt-16 flex justify-start"
                   animate={{ y: [0, 8, 0] }}
                   transition={{
                     duration: 2,
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
-                />
+                >
+                  <div className="flex h-8 w-5 items-start justify-center rounded-full border-2 border-muted-foreground/30 p-1">
+                    <motion.div
+                      className="h-1.5 w-1.5 rounded-full bg-muted-foreground/50"
+                      animate={{ y: [0, 8, 0] }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    />
+                  </div>
+                </motion.div>
+              </BlurFade>
+            </div>
+
+            {/* Right: hero image */}
+            <BlurFade delay={0.4}>
+              <div className="hidden items-center lg:flex">
+                <div className="relative w-[120%] -mr-16 opacity-90 dark:opacity-60 dark:[filter:brightness(1.1)_contrast(0.9)]">
+                  <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-purple-500/10 via-blue-500/10 to-pink-500/10 blur-2xl" />
+                  <HeroImage />
+                </div>
               </div>
-            </motion.div>
-          </BlurFade>
+            </BlurFade>
+          </div>
         </div>
       </section>
 
