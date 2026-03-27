@@ -138,26 +138,7 @@
 
 ---
 
-## 7. 项目页 SEO（`app/[locale]/projects/page.tsx`）
-
-- **项目页 Metadata**
-  - 新增 `generateMetadata({ params: { locale } })`：
-    - 标题：
-      - 中文：「项目」
-      - 英文：「Projects」
-    - 描述：
-      - 中文：「我的开源项目与作品集」
-      - 英文：「My open source projects and portfolio」
-  - 设置：
-    - `alternates.canonical = {SITE_URL}/{locale}/projects`。
-    - `openGraph`：
-      - `title`: 「项目 | Geeki's Blog / Projects | Geeki's Blog」。
-      - `description`: 同上。
-      - `url`: 对应语言项目页 URL。
-
----
-
-## 8. 全站 Sitemap（`app/sitemap.ts`）
+## 7. 全站 Sitemap（`app/sitemap.ts`）
 
 - **自动生成 `/sitemap.xml`**
   - 使用 `MetadataRoute.Sitemap` 导出 `sitemap()` 函数，让 Next.js 自动在构建 / 请求时生成站点地图。
@@ -165,12 +146,11 @@
     - **静态页面**（按语言展开）：
       - `/{locale}`（首页）
       - `/{locale}/articles`（文章列表）
-      - `/{locale}/projects`（项目页）
       - `/{locale}/resume`（简历页）
     - 为每个静态路径配置：
       - `lastModified`: 当前时间。
       - `changeFrequency`: 不同页面设置为 `monthly` / `daily` 等。
-      - `priority`: 首页最高，其次文章列表，再是项目与简历。
+      - `priority`: 首页最高，其次文章列表，再是简历。
     - **动态文章页面**：
       - 从 Supabase 的 `article` 表查询已发布文章（`published = true`），读取 `slug` 和 `updated_at`。
       - 为每篇文章生成：

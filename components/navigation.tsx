@@ -21,7 +21,6 @@ export function Navigation({ locale }: { locale: string }) {
     { href: `/${locale}`, label: t("home") },
     { href: `/${locale}/articles`, label: t("articles") },
     { href: `/${locale}/resume`, label: t("resume") },
-    { href: `/${locale}/projects`, label: t("projects") },
   ];
 
   // 社交媒体链接配置

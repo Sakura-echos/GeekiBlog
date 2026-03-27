@@ -209,8 +209,6 @@ app/
 │   │   ├── page.tsx        → 博客列表 (/zh/blog)
 │   │   └── [slug]/
 │   │       └── page.tsx    → 文章详情 (/zh/blog/xxx)
-│   └── projects/
-│       └── page.tsx        → 项目页 (/zh/projects)
 ```
 
 **URL 对应关系**:
@@ -612,7 +610,6 @@ export default function AboutPage() {
   "nav": {
     "home": "首页",
     "blog": "博客",
-    "projects": "项目",
     "about": "关于" // 新增
   }
 }
@@ -638,7 +635,6 @@ export default function AboutPage() {
 const navLinks = [
   { href: `/${locale}`, label: t("home") },
   { href: `/${locale}/blog`, label: t("blog") },
-  { href: `/${locale}/projects`, label: t("projects") },
   { href: `/${locale}/about`, label: t("about") }, // 新增
 ];
 ```

@@ -2,8 +2,7 @@
   "nav": {
     "home": "Home",
     "articles": "Articles",
-    "resume": "Resume",
-    "projects": "Projects"
+    "resume": "Resume"
   },
   "home": {
     "greeting": "Hi, I'm",
@@ -39,13 +38,6 @@
     "workExperience": "Work Experience",
     "projectExperience": "Project Experience",
     "education": "Education"
-  },
-  "projects": {
-    "title": "Projects",
-    "subtitle": "My open source projects and portfolio",
-    "viewDemo": "View Demo",
-    "viewCode": "View Code",
-    "noProjects": "No projects yet"
   },
   "theme": {
     "light": "Light Mode",

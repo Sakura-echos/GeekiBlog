@@ -95,8 +95,7 @@ geeki-blog/
 │   ├── [locale]/            # 国际化路由
 │   │   ├── layout.tsx       # 语言特定布局
 │   │   ├── page.tsx         # 首页
-│   │   ├── blog/            # 博客页面
-│   │   └── projects/        # 项目页面
+│   │   └── blog/            # 博客页面
 │   ├── globals.css          # 全局样式
 │   └── layout.tsx           # 根布局
 ├── components/              # React 组件
@@ -105,12 +104,10 @@ geeki-blog/
 │   ├── theme-toggle.tsx    # 主题切换
 │   ├── language-toggle.tsx # 语言切换
 │   ├── masonry-grid.tsx    # 瀑布流布局
-│   ├── blog-card.tsx       # 博客卡片
-│   └── project-card.tsx    # 项目卡片
+│   └── blog-card.tsx       # 博客卡片
 ├── lib/                     # 工具函数和数据
 │   ├── utils.ts            # 工具函数
-│   ├── blog-data.ts        # 博客数据
-│   └── project-data.ts     # 项目数据
+│   └── blog-data.ts        # 博客数据
 ├── messages/                # 国际化翻译文件
 │   ├── zh.json             # 中文翻译
 │   └── en.json             # 英文翻译
@@ -157,21 +154,6 @@ geeki-blog/
   date: "2024-01-01",
   readTime: 5,
   tags: ["Tag1", "Tag2"],
-}
-```
-
-### 添加项目
-
-编辑 `lib/project-data.ts` 文件，在 `projects` 数组中添加新项目：
-
-```typescript
-{
-  id: "project-id",
-  title: "Project Title",
-  description: "Project description...",
-  tags: ["Tech1", "Tech2"],
-  demoUrl: "https://demo.com",
-  githubUrl: "https://github.com/...",
 }
 ```
 

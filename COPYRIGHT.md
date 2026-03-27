@@ -85,7 +85,6 @@ The following content is **All Rights Reserved**:
 1. ✅ **Keep** the MIT License file
 2. ✅ **Delete** or replace all personal content:
    - Edit `lib/blog-data.ts` with your own articles
-   - Edit `lib/project-data.ts` with your own projects
    - Edit `messages/zh.json` and `messages/en.json` with your info
    - Edit `app/[locale]/page.tsx` homepage content
 3. ✅ **Customize** the code as you wish

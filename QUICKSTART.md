@@ -41,11 +41,6 @@ npm run dev
 - 查看瀑布流布局的文章列表
 - 点击任意文章卡片可以查看文章详情
 
-### 项目页面
-
-- 访问 `/zh/projects` 或 `/en/projects`
-- 查看瀑布流布局的项目展示
-
 ## 🎨 自定义内容
 
 ### 修改个人信息
@@ -55,7 +50,6 @@ npm run dev
 1. **首页内容**: `app/[locale]/page.tsx`
 2. **导航栏链接**: `components/navigation.tsx`
 3. **博客文章**: `lib/blog-data.ts`
-4. **项目信息**: `lib/project-data.ts`
 
 ### 修改社交媒体链接
 

@@ -37,8 +37,6 @@ geeki-blog/
 │   │   │   ├── page.tsx         # 博客列表
 │   │   │   └── [slug]/          # 博客详情
 │   │   │       └── page.tsx
-│   │   └── projects/            # 项目模块
-│   │       └── page.tsx
 │   ├── globals.css              # 全局样式和 CSS 变量
 │   ├── layout.tsx               # 根布局
 │   └── not-found.tsx            # 404 页面
@@ -49,12 +47,10 @@ geeki-blog/
 │   ├── theme-toggle.tsx         # 主题切换按钮
 │   ├── language-toggle.tsx      # 语言切换按钮
 │   ├── masonry-grid.tsx         # 瀑布流布局组件
-│   ├── blog-card.tsx            # 博客卡片组件
-│   └── project-card.tsx         # 项目卡片组件
+│   └── blog-card.tsx            # 博客卡片组件
 ├── lib/                         # 工具和数据
 │   ├── utils.ts                # 工具函数
-│   ├── blog-data.ts            # 博客数据
-│   └── project-data.ts         # 项目数据
+│   └── blog-data.ts            # 博客数据
 ├── messages/                    # 国际化翻译
 │   ├── zh.json                 # 中文翻译
 │   └── en.json                 # 英文翻译
@@ -186,24 +182,6 @@ export const blogPosts: BlogPost[] = [
 ];
 ```
 
-### 添加项目
-
-编辑 `lib/project-data.ts`：
-
-```typescript
-export const projects: Project[] = [
-  // ... 现有项目
-  {
-    id: "my-project", // 唯一 ID
-    title: "我的项目", // 项目名称
-    description: "项目描述...", // 项目描述
-    tags: ["React", "TypeScript"], // 技术栈
-    demoUrl: "https://demo.com", // 演示链接（可选）
-    githubUrl: "https://github.com/", // 源码链接（可选）
-  },
-];
-```
-
 ### 更新翻译
 
 同时更新中英文翻译文件：
@@ -258,7 +236,6 @@ export function MyComponent() {
 const navLinks = [
   { href: `/${locale}`, label: t("home") },
   { href: `/${locale}/blog`, label: t("blog") },
-  { href: `/${locale}/projects`, label: t("projects") },
   { href: `/${locale}/about`, label: t("about") }, // 新增
 ];
 ```
