@@ -4,6 +4,7 @@ import { getMessages } from "next-intl/server";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { NavigationProgress } from "@/components/providers/navigation-progress";
 import { Navigation } from "@/components/navigation";
+import { ChatWidget } from "@/components/chat/ChatWidget";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://geekiblog.com";
 
@@ -95,6 +96,9 @@ export default async function LocaleLayout({
                 </p>
               </div>
             </footer>
+
+            {/* 在线客服悬浮组件 */}
+            <ChatWidget />
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>
