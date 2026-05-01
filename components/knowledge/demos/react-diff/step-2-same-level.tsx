@@ -44,8 +44,8 @@ function VNode({
 
   const animClass: Record<NodeState, string> = {
     normal: "animate__animated animate__fadeInDown",
-    matched: "animate__animated animate__fadeInDown animate__pulse",
-    removed: "animate__animated animate__fadeInDown animate__shakeX",
+    matched: "animate__animated animate__pulse",
+    removed: "animate__animated animate__shakeX",
     added: "animate__animated animate__bounceIn",
   };
 
@@ -99,7 +99,7 @@ export function Step2SameLevel({ isActive }: Props) {
             <div className="h-4 w-px bg-border" />
             <div className="flex gap-2">
               <VNode label="<B>" state="matched" delay="0.6s" isActive={isActive} />
-              <VNode label="<D>" state="removed" delay="0.75s" isActive={isActive} />
+              <VNode label="<D>" state="added" delay="0.75s" isActive={isActive} />
             </div>
           </div>
 
