@@ -1,10 +1,15 @@
 // components/knowledge/demos/react-diff/step-6-summary.tsx
 "use client";
 import { cn } from "@/lib/utils";
+import { useTheme } from "next-themes";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-interface Props { isActive: boolean }
+interface Props {
+  isActive: boolean;
+  direction: "forward" | "backward";
+}
 
 const summaryPoints = [
   { icon: "🌳", title: "Virtual DOM", desc: "JS 对象描述 UI，render 前先在内存 diff，再批量更新真实 DOM" },
@@ -21,7 +26,9 @@ const finalCode = `// React Diff 三大假设
 
 // 整体时间复杂度：O(n)（传统 diff 是 O(n³)）`;
 
-export function Step6Summary({ isActive }: Props) {
+export function Step6Summary({ isActive, direction }: Props) {
+  const { resolvedTheme } = useTheme();
+  const codeStyle = resolvedTheme === "dark" ? oneDark : oneLight;
   return (
     <div className="flex h-full flex-col items-center overflow-y-auto px-8 py-10">
       <div className={cn(
@@ -54,7 +61,7 @@ export function Step6Summary({ isActive }: Props) {
         "w-full max-w-2xl rounded-xl border border-border overflow-hidden",
         isActive ? "animate__animated animate__fadeInUp" : "opacity-0"
       )} style={{ animationDelay: "0.7s" }}>
-        <SyntaxHighlighter language="javascript" style={oneLight} customStyle={{ margin: 0, fontSize: "12px", background: "var(--secondary-bg)" }}>
+        <SyntaxHighlighter language="javascript" style={codeStyle} customStyle={{ margin: 0, fontSize: "12px", background: "var(--secondary-bg)" }}>
           {finalCode}
         </SyntaxHighlighter>
       </div>

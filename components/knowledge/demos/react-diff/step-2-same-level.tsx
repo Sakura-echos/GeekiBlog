@@ -1,9 +1,14 @@
 "use client";
 import { cn } from "@/lib/utils";
+import { useTheme } from "next-themes";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-interface Props { isActive: boolean }
+interface Props {
+  isActive: boolean;
+  direction: "forward" | "backward";
+}
 
 const code = `function reconcileChildFibers(
   returnFiber,
@@ -58,7 +63,9 @@ function VNode({
   );
 }
 
-export function Step2SameLevel({ isActive }: Props) {
+export function Step2SameLevel({ isActive, direction }: Props) {
+  const { resolvedTheme } = useTheme();
+  const codeStyle = resolvedTheme === "dark" ? oneDark : oneLight;
   return (
     <div className="flex h-full gap-0">
       {/* 可视化区域 */}
@@ -141,7 +148,7 @@ export function Step2SameLevel({ isActive }: Props) {
         <div className="rounded-xl border border-border overflow-hidden text-xs">
           <SyntaxHighlighter
             language="javascript"
-            style={oneLight}
+            style={codeStyle}
             customStyle={{ margin: 0, fontSize: "11px", background: "transparent" }}
           >
             {code}

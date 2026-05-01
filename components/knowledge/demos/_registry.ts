@@ -13,6 +13,5 @@ export const DEMO_REGISTRY: Record<
   string,
   () => Promise<{ default: ComponentType<DemoProps> }>
 > = {
-  "react-diff": () =>
-    import("./react-diff/index").then((m) => ({ default: m.ReactDiffDemo })),
+  "react-diff": () => import("./react-diff/index"),
 };

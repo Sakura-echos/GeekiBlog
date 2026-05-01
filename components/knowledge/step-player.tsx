@@ -1,6 +1,4 @@
 // components/knowledge/step-player.tsx
-"use client";
-
 import { useState, useCallback } from "react";
 
 export interface StepPlayerState {

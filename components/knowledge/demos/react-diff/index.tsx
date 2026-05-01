@@ -22,32 +22,32 @@ export function ReactDiffDemo({ locale, backHref }: Props) {
     {
       labelZh: "什么是 Virtual DOM",
       labelEn: "What is Virtual DOM",
-      content: <Step1Vdom isActive={currentStep === 0} />,
+      content: (direction) => <Step1Vdom isActive={currentStep === 0} direction={direction} />,
     },
     {
       labelZh: "同层比较策略",
       labelEn: "Same-level Comparison",
-      content: <Step2SameLevel isActive={currentStep === 1} />,
+      content: (direction) => <Step2SameLevel isActive={currentStep === 1} direction={direction} />,
     },
     {
       labelZh: "类型不同直接替换",
       labelEn: "Type Mismatch",
-      content: <Step3TypeDiff isActive={currentStep === 2} />,
+      content: (direction) => <Step3TypeDiff isActive={currentStep === 2} direction={direction} />,
     },
     {
       labelZh: "key 的作用",
       labelEn: "Role of Keys",
-      content: <Step4Key isActive={currentStep === 3} />,
+      content: (direction) => <Step4Key isActive={currentStep === 3} direction={direction} />,
     },
     {
       labelZh: "列表 Diff 优化",
       labelEn: "List Diff Optimization",
-      content: <Step5ListDiff isActive={currentStep === 4} />,
+      content: (direction) => <Step5ListDiff isActive={currentStep === 4} direction={direction} />,
     },
     {
       labelZh: "完整流程回顾",
       labelEn: "Full Summary",
-      content: <Step6Summary isActive={currentStep === 5} />,
+      content: (direction) => <Step6Summary isActive={currentStep === 5} direction={direction} />,
     },
   ];
 

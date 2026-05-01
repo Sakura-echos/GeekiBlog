@@ -1,11 +1,16 @@
 // components/knowledge/demos/react-diff/step-5-list-diff.tsx
 "use client";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-interface Props { isActive: boolean }
+interface Props {
+  isActive: boolean;
+  direction: "forward" | "backward";
+}
 
 const code = `// React 列表 Diff 两轮策略
 // 第一轮：顺序扫描，处理头部连续可复用节点
@@ -49,8 +54,14 @@ const statusStyle: Record<string, string> = {
   new: "border-amber-400 bg-amber-50 text-amber-700 dark:bg-amber-950 dark:text-amber-400",
 };
 
-export function Step5ListDiff({ isActive }: Props) {
+export function Step5ListDiff({ isActive, direction }: Props) {
   const [phase, setPhase] = useState(0);
+  const { resolvedTheme } = useTheme();
+  const codeStyle = resolvedTheme === "dark" ? oneDark : oneLight;
+
+  useEffect(() => {
+    if (!isActive) setPhase(0);
+  }, [isActive]);
 
   return (
     <div className="flex h-full gap-0">
@@ -146,7 +157,7 @@ export function Step5ListDiff({ isActive }: Props) {
       <div className="w-72 shrink-0 overflow-y-auto bg-background-secondary p-5">
         <p className="mb-3 text-[10px] uppercase tracking-widest text-text-secondary">核心源码</p>
         <div className="rounded-xl border border-border overflow-hidden text-xs">
-          <SyntaxHighlighter language="javascript" style={oneLight} customStyle={{ margin: 0, fontSize: "10px", background: "transparent" }}>
+          <SyntaxHighlighter language="javascript" style={codeStyle} customStyle={{ margin: 0, fontSize: "10px", background: "transparent" }}>
             {code}
           </SyntaxHighlighter>
         </div>

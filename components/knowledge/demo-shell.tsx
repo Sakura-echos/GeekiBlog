@@ -10,7 +10,7 @@ import type { StepPlayerState } from "./step-player";
 export interface DemoStep {
   labelZh: string;
   labelEn: string;
-  content: ReactNode;
+  content: (direction: "forward" | "backward") => ReactNode;
 }
 
 interface DemoShellProps {
@@ -35,7 +35,7 @@ export function DemoShell({
   backHref,
 }: DemoShellProps) {
   const t = useTranslations("knowledge");
-  const { currentStep, goTo, next, prev, isFirst, isLast } = player;
+  const { currentStep, direction, goTo, next, prev, isFirst, isLast } = player;
 
   return (
     <div className="flex h-[calc(100vh-64px)] flex-col overflow-hidden">
@@ -105,7 +105,7 @@ export function DemoShell({
 
         {/* 演示内容区 */}
         <div className="flex-1 overflow-y-auto">
-          {steps[currentStep]?.content}
+          {steps[currentStep]?.content(direction)}
         </div>
       </div>
 

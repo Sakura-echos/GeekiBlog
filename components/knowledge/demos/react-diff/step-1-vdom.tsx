@@ -1,9 +1,14 @@
 "use client";
 import { cn } from "@/lib/utils";
+import { useTheme } from "next-themes";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-interface Props { isActive: boolean }
+interface Props {
+  isActive: boolean;
+  direction: "forward" | "backward";
+}
 
 const jsCode = `// Virtual DOM 本质上是一个 JS 对象
 const vdom = {
@@ -23,7 +28,9 @@ const vdom = {
   ],
 };`;
 
-export function Step1Vdom({ isActive }: Props) {
+export function Step1Vdom({ isActive, direction }: Props) {
+  const { resolvedTheme } = useTheme();
+  const codeStyle = resolvedTheme === "dark" ? oneDark : oneLight;
   const anim = isActive ? "animate__animated animate__fadeInDown" : "opacity-0";
 
   return (
@@ -41,7 +48,7 @@ export function Step1Vdom({ isActive }: Props) {
         <div className={cn("flex-1", anim)} style={{ animationDelay: "0.1s" }}>
           <p className="mb-2 text-[10px] uppercase tracking-widest text-text-secondary">JS 对象（VNode）</p>
           <div className="rounded-xl border border-border overflow-hidden text-xs">
-            <SyntaxHighlighter language="javascript" style={oneLight} customStyle={{ margin: 0, fontSize: "11px", background: "var(--secondary-bg)" }}>
+            <SyntaxHighlighter language="javascript" style={codeStyle} customStyle={{ margin: 0, fontSize: "11px", background: "var(--secondary-bg)" }}>
               {jsCode}
             </SyntaxHighlighter>
           </div>

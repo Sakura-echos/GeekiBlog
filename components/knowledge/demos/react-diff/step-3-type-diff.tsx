@@ -1,9 +1,14 @@
 "use client";
 import { cn } from "@/lib/utils";
+import { useTheme } from "next-themes";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-interface Props { isActive: boolean }
+interface Props {
+  isActive: boolean;
+  direction: "forward" | "backward";
+}
 
 const code = `function updateElement(current, element) {
   if (current?.type === element.type) {
@@ -14,7 +19,9 @@ const code = `function updateElement(current, element) {
   return createFiberFromElement(element);
 }`;
 
-export function Step3TypeDiff({ isActive }: Props) {
+export function Step3TypeDiff({ isActive, direction }: Props) {
+  const { resolvedTheme } = useTheme();
+  const codeStyle = resolvedTheme === "dark" ? oneDark : oneLight;
   return (
     <div className="flex h-full gap-0">
       <div className="flex flex-1 flex-col items-center justify-center gap-8 px-8 py-10 border-r border-border">
@@ -75,7 +82,7 @@ export function Step3TypeDiff({ isActive }: Props) {
       <div className="w-72 shrink-0 overflow-y-auto bg-background-secondary p-5">
         <p className="mb-3 text-[10px] uppercase tracking-widest text-text-secondary">核心源码</p>
         <div className="rounded-xl border border-border overflow-hidden text-xs">
-          <SyntaxHighlighter language="javascript" style={oneLight} customStyle={{ margin: 0, fontSize: "11px", background: "transparent" }}>
+          <SyntaxHighlighter language="javascript" style={codeStyle} customStyle={{ margin: 0, fontSize: "11px", background: "transparent" }}>
             {code}
           </SyntaxHighlighter>
         </div>
