@@ -1,21 +1,22 @@
-export type KnowledgeItem = {
+export interface KnowledgeItem {
   slug: string;
   titleZh: string;
   titleEn: string;
   descZh: string;
   descEn: string;
-  tags: string[];
+  tagsZh: string[];
+  tagsEn: string[];
   icon: string;
   steps: number;
-};
+}
 
-export type KnowledgeCategory = {
+export interface KnowledgeCategory {
   id: string;
   nameZh: string;
   nameEn: string;
   emoji: string;
   items: KnowledgeItem[];
-};
+}
 
 export const KNOWLEDGE_CATEGORIES: KnowledgeCategory[] = [
   {
@@ -32,7 +33,8 @@ export const KNOWLEDGE_CATEGORIES: KnowledgeCategory[] = [
           "React 如何高效对比新旧 Virtual DOM？理解三大假设、同层比较策略与 key 的关键作用。",
         descEn:
           "How React efficiently diffs Virtual DOM trees. Three assumptions, same-level comparison, and the role of keys.",
-        tags: ["6 步动画", "树结构可视化", "代码高亮"],
+        tagsZh: ["6 步动画", "树结构可视化", "代码高亮"],
+        tagsEn: ["6-step animation", "tree visualization", "code highlight"],
         icon: "🌳",
         steps: 6,
       },
