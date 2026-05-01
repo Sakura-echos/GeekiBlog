@@ -8,6 +8,7 @@ interface KnowledgeSidebarProps {
   activeId: string;
   onSelect: (id: string) => void;
   labelText: string;
+  locale: string;
 }
 
 export function KnowledgeSidebar({
@@ -15,6 +16,7 @@ export function KnowledgeSidebar({
   activeId,
   onSelect,
   labelText,
+  locale,
 }: KnowledgeSidebarProps) {
   return (
     <aside className="w-[200px] shrink-0 border-r border-border flex flex-col py-6">
@@ -45,7 +47,7 @@ export function KnowledgeSidebar({
                       : "text-text-secondary"
                   )}
                 >
-                  {cat.nameZh}
+                  {locale === "zh" ? cat.nameZh : cat.nameEn}
                 </span>
               </span>
               <span className="rounded-full border border-border bg-background-secondary px-1.5 py-0.5 text-[10px] text-text-secondary">

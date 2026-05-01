@@ -29,6 +29,7 @@ export function KnowledgeList({
         activeId={activeCategoryId}
         onSelect={setActiveCategoryId}
         labelText={locale === "zh" ? "分类" : "Category"}
+        locale={locale}
       />
 
       <main className="flex-1 overflow-y-auto">
@@ -46,7 +47,6 @@ export function KnowledgeList({
                 <KnowledgeCard
                   key={item.slug}
                   item={item}
-                  category={activeCategory}
                   locale={locale}
                 />
               ))}

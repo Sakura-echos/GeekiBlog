@@ -1,14 +1,13 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import type { KnowledgeItem, KnowledgeCategory } from "@/lib/knowledge-data";
+import type { KnowledgeItem } from "@/lib/knowledge-data";
 
 interface KnowledgeCardProps {
   item: KnowledgeItem;
-  category: KnowledgeCategory;
   locale: string;
 }
 
-export function KnowledgeCard({ item, category, locale }: KnowledgeCardProps) {
+export function KnowledgeCard({ item, locale }: KnowledgeCardProps) {
   return (
     <Link
       href={`/${locale}/knowledge/${item.slug}`}
