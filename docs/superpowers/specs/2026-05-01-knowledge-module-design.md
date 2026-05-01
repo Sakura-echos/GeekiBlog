@@ -146,7 +146,7 @@ lib/
 | 2 | 同层比较策略 | 新旧树节点颜色对比（绿=复用，红=销毁，橙=新增） | animate.css `fadeInDown` + `shakeX` + `bounceIn` |
 | 3 | 类型不同直接替换 | `<div>` → `<span>` 动画替换 | animate.css `flipOutX` / `flipInX` |
 | 4 | key 的作用 | 无 key vs 有 key 的列表 reorder 对比 | animate.css `slideInLeft` + 位置交换 |
-| 5 | 列表 Diff 优化 | 双指针扫描动画（头头/尾尾/头尾/key 映射） | Canvas 或 CSS 动画 |
+| 5 | 列表 Diff 优化 | 双指针扫描动画（头头/尾尾/头尾/key 映射） | CSS position transition + animate.css `fadeIn` |
 | 6 | 完整流程回顾 | 代码路径高亮 + 流程图 | animate.css `fadeIn` 逐行高亮 |
 
 每个步骤组件接收 `{ isActive: boolean; direction: "forward" | "backward" }` props，`isActive` 为 true 时触发入场动画类。

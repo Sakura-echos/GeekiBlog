@@ -34,10 +34,13 @@
     "title": "Resume",
     "downloadZh": "Download CV (Chinese)",
     "downloadEn": "Download CV (English)",
+    "profile": "Profile",
     "skills": "Skills",
+    "languages": "Languages",
     "workExperience": "Work Experience",
     "projectExperience": "Project Experience",
-    "education": "Education"
+    "education": "Education",
+    "techStack": "Stack"
   },
   "theme": {
     "light": "Light Mode",

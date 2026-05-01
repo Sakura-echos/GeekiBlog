@@ -34,10 +34,13 @@
     "title": "简历",
     "downloadZh": "下载中文简历",
     "downloadEn": "下载英文简历",
+    "profile": "简介",
     "skills": "技能",
+    "languages": "语言",
     "workExperience": "工作经历",
     "projectExperience": "项目经历",
-    "education": "教育经历"
+    "education": "教育经历",
+    "techStack": "技术栈"
   },
   "theme": {
     "light": "浅色模式",

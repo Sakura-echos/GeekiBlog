@@ -1,8 +1,8 @@
 export type ResumeLocale = "zh" | "en";
 
-export interface ResumeSkills {
-  techStack: string;
-  languages: string;
+export interface SkillGroup {
+  title: string;
+  items: string[];
 }
 
 export interface WorkItem {
@@ -17,6 +17,7 @@ export interface WorkItem {
 export interface ProjectItem {
   name: string;
   description: string;
+  stack?: string;
   points: string[];
 }
 
@@ -30,12 +31,18 @@ export interface EducationItem {
 
 export interface ResumeData {
   name: string;
+  headline: string;
+  summary: string;
   contact: {
-    address: string;
+    location: string;
     email: string;
     phone: string;
+    blogLabel: string;
+    blogUrl: string;
+    age: string;
+    languages: string;
   };
-  skills: ResumeSkills;
+  skillGroups: SkillGroup[];
   work: WorkItem[];
   projects: ProjectItem[];
   education: EducationItem[];
@@ -44,173 +51,254 @@ export interface ResumeData {
 export const resumeData: Record<ResumeLocale, ResumeData> = {
   zh: {
     name: "黄子杰",
+    headline: "前端 / 跨平台开发工程师",
+    summary:
+      "约 2 年港澳政企项目经验，专注 React 与 React Native 的 Web / App 交付；熟悉 OAuth2、JS Bridge、大列表与相机等场景的性能与工程化实践，具备需求分析、方案设计、上线与部分 DevOps 的端到端能力；日常使用 Cursor 与 MCP 等工具提升交付效率。",
     contact: {
-      address: "中国 广东省 珠海市",
+      location: "广东省珠海市",
       email: "qqa12348999@gmail.com",
-      phone: "+86 133 266 13688",
+      phone: "+86 133 2661 3688",
+      blogLabel: "geekiblog.com",
+      blogUrl: "https://www.geekiblog.com",
+      age: "25 岁",
+      languages: "粤语（母语）、普通话、英语（CET-6）",
     },
-    skills: {
-      techStack:
-        "技术栈: React, React-Native, Redux, Angular, MySQL, Git, JavaScript, TypeScript, Vue, HTML, CSS, Android, IOS, Charles, WireShark.",
-      languages: "语言: 粤语, 普通话, 英语(通过CET-6).",
-    },
+    skillGroups: [
+      {
+        title: "核心框架",
+        items: [
+          "熟练 React 生态（Redux、React Navigation）及底层机制（如 Diff 与更新流程）。",
+        ],
+      },
+      {
+        title: "移动端",
+        items: [
+          "React Native 跨平台（Android / iOS），熟悉 Google Play、App Store 上架与发布流程。",
+        ],
+      },
+      {
+        title: "Web 基础",
+        items: [
+          "深入理解 JavaScript（闭包、this、原型链）、ES6+与 TypeScript。",
+          "熟练使用 CSS（媒体查询、Flex / Grid）做响应式布局。",
+        ],
+      },
+      {
+        title: "工程与运维",
+        items: [
+          "Webpack、Git / SVN、Prettier、ESLint；Charles / Wireshark 抓包调试。",
+        ],
+      },
+      {
+        title: "AI 辅助开发",
+        items: [
+          "熟练使用 Cursor，了解 MCP、Skills、Rules 等自动化工作流。",
+        ],
+      },
+      {
+        title: "其他",
+        items: [
+          "了解 Angular、Vue 2/3、VuePress 等栈，可快速接入既有项目。",
+        ],
+      },
+    ],
     work: [
       {
         company: "萬訊電腦科技有限公司",
         role: "软件开发工程师",
-        period: "2022.10 - 2024.10",
+        period: "2022.10 – 2024.10",
         companyDesc:
-          "公司为爱达利控股有限公司(香港股票代码8033)成员。详见 https://www.megadatatech.com/en/about/",
+          "爱达利控股有限公司（香港上市编号 8033）成员企业。",
         companyUrl: "https://www.megadatatech.com/en/about/",
         points: [
-          "在 MEGA Datatech 担任前端开发工程师，负责评估、开发和维护移动应用和网页应用。",
-          "通过创建可复用组件、优化构建流程及提升页面加载速度，对项目进行优化。",
-          "负责应用程序在 Google Play 和 App Store 上的发布管理工作。",
-          "处理部分 DevOps 任务，包括项目打包及生产环境的部署。",
-          "使用 VuePress 框架和 Markdown 编写内部使用的技术文档及部署指南。",
+          "独立负责澳门政府多个 Web 与移动端项目的前端开发与维护（React、Angular、React Native）。",
+          "覆盖需求分析、技术方案、生产部署与部分 DevOps，完成端到端交付。",
+          "使用 VuePress 与 Markdown 搭建内部技术文档体系，降低团队沟通与上手成本。",
         ],
       },
     ],
     projects: [
       {
-        name: "柜台预约系统",
-        description: "一款嵌入澳门政府 app 的 web 网页应用(使用 React 开发)",
-        points: [
-          "实现 OAuth2 第三方授权。",
-          "集成 iframe 实现多语言切换、用户登录/登出。",
-          "通过签名校验访问移动端设备能力。",
-          "开发并集成深色模式。",
-          "使用 Git commit ID 优化构建文件版本管理。",
-          "集成 Eruda 实现 app 内网页日志可见。",
-          "使用 Charles 及浏览器开发工具进行调试。",
-        ],
-      },
-      {
-        name: "筹号服务系统",
+        name: "政务大厅筹号服务系统（Android）",
         description:
-          "一款基于安卓平台的取票系统(如预约、叫号功能)(使用 React-Native 开发)",
+          "面向线下政务大厅的 Android 应用：筹号、排队与调度等业务。",
+        stack:
+          "React Native、Redux、React Navigation、WebView、react-native-vision-camera、Android Studio",
         points: [
-          "定制组件，使用 Redux 管理状态、React Navigation 管理路由。",
-          "封装 XML、JSON 网络请求。",
-          "在 Android 应用中嵌入 WebView，集成 OAuth2。",
-          "使用 react-native-vision-camera 实现二维码扫描。",
-          "针对 dev、uat、prod 环境优化打包。",
+          "使用 FlashList 虚拟列表，并结合 memo / useMemo 优化大列表渲染，减少卡顿。",
+          "设计同时支持 XML 与 JSON 的网络层，兼容遗留接口。",
+          "基于 react-native-vision-camera 实现高性能扫码，并优化相机触发策略。",
         ],
       },
       {
-        name: "ARQ- 排队、预约及轮候系统",
-        description: "(使用 Angular 开发)",
+        name: "澳门政府柜台预约系统（React Web）",
+        description:
+          "嵌入官方政府 App 的 H5 预约平台，通过 JS Bridge 与原生交互。",
+        stack: "React、Redux、OAuth2、antd-mobile、i18n",
         points: [
-          "实现繁体中文、简体中文、英文、葡文 i18n。",
-          "为不同政府部门定制 CSS 样式。",
-          "使用可复用组件优化代码，降低维护成本。",
+          "封装 JS Bridge，打通 App 与 H5；使用 OAuth2 + PKCE 实现 SSO。",
+          "在多层 iframe 场景下保持会话与多语言切换一致。",
+          "搭建 Dev / Uat / Prod / Gray 多环境 CI/CD，构建唯一 ID，并集成 Eruda 便于生产环境可视化调试。",
+        ],
+      },
+      {
+        name: "个人技术博客",
+        description: "全栈博客站点与在线简历，持续迭代内容与工程实践。",
+        stack: "Next.js、Tailwind CSS、TypeScript、Supabase、Vercel",
+        points: [
+          "Markdown 编辑、草稿、图片上传、无限滚动等完整内容管理能力。",
+          "SEO：generateMetadata、JSON-LD、自动化 sitemap 等。",
+          "基于 Supabase Realtime（PostgreSQL CDC）与 WebSocket 的即时通讯能力。",
         ],
       },
     ],
     education: [
       {
-        major: "软件工程",
+        major: "软件工程 · 学士",
         school: "广东海洋大学",
-        location: "湛江市, 广东省",
-        period: "2017.9 - 2022.9",
+        location: "湛江市，广东省",
+        period: "2017.09 – 2022.06",
         points: [
-          "GPA: 3.66/5.0 (专业前10%)",
-          "多次获得大学奖学金(包括台湾免学费海外学习项目)",
+          "GPA 3.66 / 5.0（专业前 10%）",
+          "多次获奖学金；软件工程卓越班成员；计算机协会会长；以第一作者发表 EI 论文一篇。",
         ],
       },
       {
-        major: "海洋环境工程系",
+        major: "海洋环境工程系 · 交换生",
         school: "高雄科技大学",
-        location: "高雄市, 台湾",
-        period: "2018.9 - 2019.1",
-        points: ["GPA: 4.1/5.0 (专业前5%)"],
+        location: "高雄市，台湾",
+        period: "2018.09 – 2019.01",
+        points: [
+          "GPA 4.1 / 5.0（专业前 5%）",
+          "全英文授课环境下的跨学科学习经历。",
+        ],
       },
     ],
   },
   en: {
-    name: "ZIJIE HUANG",
+    name: "Zijie Huang",
+    headline: "Frontend & Cross-Platform Developer",
+    summary:
+      "Around two years delivering government-facing Web and mobile apps in Macau/HK, focused on React and React Native. Strong in OAuth2, JS Bridge, list/camera performance, and end-to-end delivery from requirements to production—including light DevOps. Day-to-day user of Cursor, MCP, and workflow automation to ship faster.",
     contact: {
-      address: "China",
+      location: "Zhuhai, Guangdong, China",
       email: "qqa12348999@gmail.com",
-      phone: "+86 133 266 13688",
-    },
-    skills: {
-      techStack:
-        "React, React-Native, Redux, Angular, MySQL, Git, JavaScript, TypeScript, Vue, HTML, CSS, Android, IOS, Charles, WireShark.",
+      phone: "+86 133 2661 3688",
+      blogLabel: "geekiblog.com",
+      blogUrl: "https://www.geekiblog.com",
+      age: "25",
       languages:
-        "Mandarin (native), Cantonese (native), English (fluent, passed CET-6).",
+        "Cantonese (native), Mandarin (fluent), English (CET-6)",
     },
+    skillGroups: [
+      {
+        title: "Core frameworks",
+        items: [
+          "React ecosystem (Redux, React Navigation) and underlying behavior (e.g. reconciliation / Diff).",
+        ],
+      },
+      {
+        title: "Mobile",
+        items: [
+          "React Native on Android & iOS; familiar with Google Play and App Store release flows.",
+        ],
+      },
+      {
+        title: "Web fundamentals",
+        items: [
+          "JavaScript (closures, `this`, prototype chain), ES6+, TypeScript.",
+          "CSS (media queries, Flexbox / Grid) for responsive layouts.",
+        ],
+      },
+      {
+        title: "Engineering & DevOps",
+        items: [
+          "Webpack; Git / SVN; Prettier / ESLint; packet capture with Charles / Wireshark.",
+        ],
+      },
+      {
+        title: "AI-assisted development",
+        items: [
+          "Cursor; MCP, Skills, and Rules for repeatable automation.",
+        ],
+      },
+      {
+        title: "Also",
+        items: [
+          "Working knowledge of Angular, Vue 2/3, and VuePress for brownfield work.",
+        ],
+      },
+    ],
     work: [
       {
-        company: "MEGA Datatech",
-        role: "Software Development Engineer at MEGA Datatech, Macao",
-        period: "Oct 2022 - Oct 2024",
+        company: "MEGA Datatech Co., Ltd.",
+        role: "Software Development Engineer",
+        period: "Oct 2022 – Oct 2024",
         companyDesc:
-          "MEGA Datatech, its history, and its affiliation with Vodatel Networks Holdings Limited. https://www.megadatatech.com/en/about/",
+          "Member company of Avatech Holdings Limited (HK stock code 8033).",
         companyUrl: "https://www.megadatatech.com/en/about/",
         points: [
-          "Front-end Development Engineer: evaluated, developed, and maintained mobile and web applications.",
-          "Optimized projects with reusable components, build pipeline improvements, and faster page loads.",
-          "Managed app releases on Google Play and App Store.",
-          "Handled DevOps tasks including packaging and production deployment.",
-          "Wrote internal technical docs and deployment guides using VuePress and Markdown.",
+          "Owned front-end delivery for multiple Macau government Web and mobile projects (React, Angular, React Native).",
+          "Covered requirements, technical design, production deployment, and light DevOps for end-to-end releases.",
+          "Built an internal VuePress + Markdown documentation system to cut onboarding and communication overhead.",
         ],
       },
     ],
     projects: [
       {
-        name: "Counter Reservation System",
+        name: "Government hall ticketing & queueing (Android)",
         description:
-          "An Appointment for counter service web application embedded in the Government App (Developed using React).",
+          "Offline hall Android app for ticketing, queueing, and scheduling.",
+        stack:
+          "React Native, Redux, React Navigation, WebView, react-native-vision-camera, Android Studio",
         points: [
-          "Implemented OAuth2 for third-party authorization.",
-          "Integrated third-party platform iframes (with multi-language and login/logout).",
-          "Accessed mobile device features via third-party platform's signature verification.",
-          "Developed and integrated dark mode theme.",
-          "Used Git commit ID for build version management.",
-          "Integrated Eruda debug script for in-app web logging.",
-          "Used Charles and browser dev tools for debugging.",
+          "Tuned large lists with FlashList plus memo / useMemo to remove jank.",
+          "Designed a network layer handling both XML and JSON for legacy backends.",
+          "Shipped high-performance QR/barcode scanning and refined camera triggers.",
         ],
       },
       {
-        name: "Ticket Service System",
+        name: "Macau government counter appointment (React Web)",
         description:
-          "An Android system of Ticket Service (e.g., appointment, call Ticket) (Developed using React-Native).",
+          "H5 appointment experience embedded in the official app via JS Bridge.",
+        stack: "React, Redux, OAuth2, antd-mobile, i18n",
         points: [
-          "Customized components, state management using Redux, React Navigation for routing.",
-          "Encapsulated network requests for XML and JSON.",
-          "Embedded WebView in Android app, integrated OAuth2 for third-party authorization.",
-          "Implemented QR code scanning with react-native-vision-camera.",
-          "Optimized build commands for dev, uat, and prod environments.",
+          "Wrapped JS Bridge for native–web messaging; SSO with OAuth2 + PKCE.",
+          "Kept session and language state consistent across nested iframes.",
+          "Multi-env CI/CD (Dev/Uat/Prod/Gray) with unique build IDs and Eruda for field debugging.",
         ],
       },
       {
-        name: "ARQ - Appointment, Getting Remote Ticket Web Application",
-        description: "(Developed using Angular).",
+        name: "Personal technical blog",
+        description: "Full-stack blog and online resume.",
+        stack: "Next.js, Tailwind CSS, TypeScript, Supabase, Vercel",
         points: [
-          "Implemented i18n for Traditional Chinese, Simplified Chinese, English, Portuguese.",
-          "Customized CSS styles for different government departments.",
-          "Optimized code with reusable components to reduce maintenance.",
+          "CMS-style authoring: Markdown, drafts, uploads, infinite scroll.",
+          "SEO: generateMetadata, JSON-LD, automated sitemaps.",
+          "Realtime chat on Supabase Realtime (PostgreSQL CDC) and WebSockets.",
         ],
       },
     ],
     education: [
       {
-        major: "BEng in Software Engineering",
+        major: "BEng, Software Engineering",
         school: "Guangdong Ocean University",
-        location: "Zhanjiang, China",
-        period: "Sep 2017 - Sep 2022",
+        location: "Zhanjiang, Guangdong",
+        period: "Sep 2017 – Jun 2022",
         points: [
-          "GPA: 3.66/5.0 (Top 10% in Major)",
-          "Multiple scholarships in University (Including Tuition-Free Study Abroad Program in Taiwan)",
+          "GPA 3.66 / 5.0 (top 10% in major)",
+          "Scholarships; Software Engineering honors class; president of the CS association; first-author EI paper.",
         ],
       },
       {
-        major: "Exchange program at the Department of Marine Environment",
+        major: "Exchange, Marine Environmental Engineering",
         school: "National Kaohsiung University of Science and Technology",
         location: "Kaohsiung, Taiwan",
-        period: "Sep 2018 - Jan 2019",
-        points: ["GPA: 4.1/5.0 (Top 5% in Major)"],
+        period: "Sep 2018 – Jan 2019",
+        points: [
+          "GPA 4.1 / 5.0 (top 5% in major)",
+          "Cross-disciplinary study in an English-medium program.",
+        ],
       },
     ],
   },
