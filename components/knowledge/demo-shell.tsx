@@ -4,12 +4,13 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
+import type { ReactNode } from "react";
 import type { StepPlayerState } from "./step-player";
 
 export interface DemoStep {
   labelZh: string;
   labelEn: string;
-  content: React.ReactNode;
+  content: ReactNode;
 }
 
 interface DemoShellProps {
