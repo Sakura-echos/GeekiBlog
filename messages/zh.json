@@ -2,7 +2,17 @@
   "nav": {
     "home": "首页",
     "articles": "文章",
-    "resume": "简历"
+    "resume": "简历",
+    "knowledge": "知识库"
+  },
+  "knowledge": {
+    "title": "知识库",
+    "subtitle": "前端核心原理，通过动画可视化深入理解",
+    "backToList": "返回列表",
+    "steps": "步骤",
+    "prevStep": "上一步",
+    "nextStep": "下一步",
+    "comingSoon": "即将上线"
   },
   "home": {
     "greeting": "你好，我是",
