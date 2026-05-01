@@ -1,6 +1,5 @@
 // components/knowledge/demos/react-diff/step-5-list-diff.tsx
 "use client";
-import "animate.css";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
