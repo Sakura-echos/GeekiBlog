@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, setRequestLocale } from "next-intl/server";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { NavigationProgress } from "@/components/providers/navigation-progress";
 import { Navigation } from "@/components/navigation";
@@ -31,8 +31,10 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
+  setRequestLocale(locale);
+
   // 获取当前语言的翻译消息
-  const messages = await getMessages();
+  const messages = await getMessages({ locale });
 
   const jsonLd = {
     "@context": "https://schema.org",
