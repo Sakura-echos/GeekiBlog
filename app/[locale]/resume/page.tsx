@@ -120,12 +120,12 @@ export default async function ResumePage({
       <ContactRow icon={Mail} href={`mailto:${data.contact.email}`}>
         {data.contact.email}
       </ContactRow>
-      <ContactRow
+      {/* <ContactRow
         icon={Phone}
         href={`tel:${data.contact.phone.replace(/\s/g, "")}`}
       >
         {data.contact.phone}
-      </ContactRow>
+      </ContactRow> */}
       <ContactRow icon={Globe} href={data.contact.blogUrl}>
         {data.contact.blogLabel}
       </ContactRow>

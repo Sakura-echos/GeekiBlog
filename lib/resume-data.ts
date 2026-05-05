@@ -36,7 +36,7 @@ export interface ResumeData {
   contact: {
     location: string;
     email: string;
-    phone: string;
+    // phone: string;
     blogLabel: string;
     blogUrl: string;
     age: string;
@@ -57,7 +57,7 @@ export const resumeData: Record<ResumeLocale, ResumeData> = {
     contact: {
       location: "广东省珠海市",
       email: "qqa12348999@gmail.com",
-      phone: "+86 133 2661 3688",
+      // phone: "+86 133 4644 6698",
       blogLabel: "geekiblog.com",
       blogUrl: "https://www.geekiblog.com",
       age: "25 岁",
@@ -178,7 +178,7 @@ export const resumeData: Record<ResumeLocale, ResumeData> = {
     contact: {
       location: "Zhuhai, Guangdong, China",
       email: "qqa12348999@gmail.com",
-      phone: "+86 133 2661 3688",
+      // phone: "+86 133 4644 6698",
       blogLabel: "geekiblog.com",
       blogUrl: "https://www.geekiblog.com",
       age: "25",
