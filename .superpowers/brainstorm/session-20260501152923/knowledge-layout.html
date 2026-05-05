@@ -1,0 +1,97 @@
+<h2>Knowledge 模块 — 布局方案选择</h2>
+<p class="subtitle">选择知识点列表页和详情页的整体布局风格</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0f172a;padding:16px;font-family:monospace;border-radius:8px;">
+      <div style="color:#64748b;font-size:11px;margin-bottom:8px;">KNOWLEDGE</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+        <div style="background:#1e293b;border:1px solid #334155;border-radius:6px;padding:10px;">
+          <div style="color:#38bdf8;font-size:10px;margin-bottom:4px;">⚛ React</div>
+          <div style="color:#94a3b8;font-size:9px;">Diff 算法</div>
+          <div style="height:3px;background:#0ea5e9;border-radius:2px;margin-top:6px;"></div>
+        </div>
+        <div style="background:#1e293b;border:1px solid #334155;border-radius:6px;padding:10px;">
+          <div style="color:#a78bfa;font-size:10px;margin-bottom:4px;">⚙ JS</div>
+          <div style="color:#94a3b8;font-size:9px;">Event Loop</div>
+          <div style="height:3px;background:#8b5cf6;border-radius:2px;margin-top:6px;"></div>
+        </div>
+        <div style="background:#1e293b;border:1px solid #334155;border-radius:6px;padding:10px;">
+          <div style="color:#34d399;font-size:10px;margin-bottom:4px;">🌐 CSS</div>
+          <div style="color:#94a3b8;font-size:9px;">BFC 原理</div>
+          <div style="height:3px;background:#10b981;border-radius:2px;margin-top:6px;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A · 卡片网格</h3>
+      <p>知识点以卡片网格展示，每张卡片有分类色彩标签。点击后进入全屏演示页，支持步进动画讲解。</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>优点</h4><ul><li>视觉丰富，易于浏览</li><li>分类清晰</li></ul></div>
+        <div class="cons"><h4>缺点</h4><ul><li>需要多个知识点才够看</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0f172a;padding:16px;font-family:monospace;border-radius:8px;display:flex;gap:10px;">
+      <div style="width:140px;flex-shrink:0;">
+        <div style="color:#64748b;font-size:10px;margin-bottom:6px;">目录</div>
+        <div style="background:#1e293b;border-left:3px solid #38bdf8;padding:5px 8px;border-radius:0 4px 4px 0;margin-bottom:4px;">
+          <div style="color:#38bdf8;font-size:9px;">▶ React Diff</div>
+        </div>
+        <div style="padding:5px 8px;margin-bottom:4px;">
+          <div style="color:#64748b;font-size:9px;">Event Loop</div>
+        </div>
+        <div style="padding:5px 8px;">
+          <div style="color:#64748b;font-size:9px;">CSS BFC</div>
+        </div>
+      </div>
+      <div style="flex:1;">
+        <div style="color:#e2e8f0;font-size:11px;margin-bottom:6px;">React Diff 算法</div>
+        <div style="background:#1e293b;border-radius:4px;height:60px;padding:8px;display:flex;align-items:center;justify-content:center;">
+          <div style="color:#38bdf8;font-size:20px;">▶ 演示</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B · 侧边栏导航</h3>
+      <p>左侧固定目录，右侧为当前知识点的完整演示，类似文档/教程网站风格。</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>优点</h4><ul><li>导航感强，内容丰富</li><li>易于扩展新知识点</li></ul></div>
+        <div class="cons"><h4>缺点</h4><ul><li>布局较复杂</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0f172a;padding:16px;font-family:monospace;border-radius:8px;">
+      <div style="text-align:center;margin-bottom:8px;">
+        <span style="background:#1e293b;border:1px solid #334155;color:#38bdf8;font-size:9px;padding:3px 8px;border-radius:20px;margin:0 2px;">React</span>
+        <span style="background:#1e293b;border:1px solid #8b5cf6;color:#a78bfa;font-size:9px;padding:3px 8px;border-radius:20px;margin:0 2px;">JavaScript</span>
+      </div>
+      <div style="background:#1e293b;border:1px solid #334155;border-radius:8px;padding:12px;">
+        <div style="color:#e2e8f0;font-size:11px;font-weight:600;margin-bottom:4px;">React Diff 算法原理</div>
+        <div style="display:flex;gap:6px;margin-top:8px;">
+          <div style="flex:1;background:#0f172a;border-radius:4px;height:30px;display:flex;align-items:center;justify-content:center;">
+            <span style="color:#64748b;font-size:9px;">旧树</span>
+          </div>
+          <div style="display:flex;align-items:center;color:#38bdf8;font-size:14px;">→</div>
+          <div style="flex:1;background:#0f172a;border-radius:4px;height:30px;display:flex;align-items:center;justify-content:center;">
+            <span style="color:#38bdf8;font-size:9px;">新树</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C · 全屏沉浸演示</h3>
+      <p>知识点列表是简洁的标签页，点击后直接进入全屏沉浸式步进演示，聚焦于动画可视化讲解。</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>优点</h4><ul><li>演示效果最强</li><li>专注度高</li></ul></div>
+        <div class="cons"><h4>缺点</h4><ul><li>列表页相对简单</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+</div>

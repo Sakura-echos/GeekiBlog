@@ -51,9 +51,9 @@ export interface ResumeData {
 export const resumeData: Record<ResumeLocale, ResumeData> = {
   zh: {
     name: "黄子杰",
-    headline: "前端 / 跨平台开发工程师",
+    headline: "全栈开发工程师",
     summary:
-      "约 2 年港澳政企项目经验，专注 React 与 React Native 的 Web / App 交付；熟悉 OAuth2、JS Bridge、大列表与相机等场景的性能与工程化实践，具备需求分析、方案设计、上线与部分 DevOps 的端到端能力；日常使用 Cursor 与 MCP 等工具提升交付效率。",
+      "约 4 年港澳政企项目经验，专注 React 与 React Native 的 Web / App 交付；熟悉 OAuth2、JS Bridge、大列表与相机等场景的性能与工程化实践，具备需求分析、方案设计、上线与部分 DevOps 的端到端能力；日常使用 Cursor 与 MCP 等工具提升交付效率。",
     contact: {
       location: "广东省珠海市",
       email: "qqa12348999@gmail.com",
@@ -91,15 +91,11 @@ export const resumeData: Record<ResumeLocale, ResumeData> = {
       },
       {
         title: "AI 辅助开发",
-        items: [
-          "熟练使用 Cursor，了解 MCP、Skills、Rules 等自动化工作流。",
-        ],
+        items: ["熟练使用 Cursor，了解 MCP、Skills、Rules 等自动化工作流。"],
       },
       {
         title: "其他",
-        items: [
-          "了解 Angular、Vue 2/3、VuePress 等栈，可快速接入既有项目。",
-        ],
+        items: ["了解 Angular、Vue 2/3、VuePress 等栈，可快速接入既有项目。"],
       },
     ],
     work: [
@@ -107,8 +103,7 @@ export const resumeData: Record<ResumeLocale, ResumeData> = {
         company: "萬訊電腦科技有限公司",
         role: "软件开发工程师",
         period: "2022.10 – 2024.10",
-        companyDesc:
-          "爱达利控股有限公司（香港上市编号 8033）成员企业。",
+        companyDesc: "爱达利控股有限公司（香港上市编号 8033）成员企业。",
         companyUrl: "https://www.megadatatech.com/en/about/",
         points: [
           "独立负责澳门政府多个 Web 与移动端项目的前端开发与维护（React、Angular、React Native）。",
@@ -179,7 +174,7 @@ export const resumeData: Record<ResumeLocale, ResumeData> = {
     name: "Zijie Huang",
     headline: "Frontend & Cross-Platform Developer",
     summary:
-      "Around two years delivering government-facing Web and mobile apps in Macau/HK, focused on React and React Native. Strong in OAuth2, JS Bridge, list/camera performance, and end-to-end delivery from requirements to production—including light DevOps. Day-to-day user of Cursor, MCP, and workflow automation to ship faster.",
+      "Around 3+ years delivering government-facing Web and mobile apps in Macau/HK, focused on React and React Native. Strong in OAuth2, JS Bridge, list/camera performance, and end-to-end delivery from requirements to production—including light DevOps. Day-to-day user of Cursor, MCP, and workflow automation to ship faster.",
     contact: {
       location: "Zhuhai, Guangdong, China",
       email: "qqa12348999@gmail.com",
@@ -187,8 +182,7 @@ export const resumeData: Record<ResumeLocale, ResumeData> = {
       blogLabel: "geekiblog.com",
       blogUrl: "https://www.geekiblog.com",
       age: "25",
-      languages:
-        "Cantonese (native), Mandarin (fluent), English (CET-6)",
+      languages: "Cantonese (native), Mandarin (fluent), English (CET-6)",
     },
     skillGroups: [
       {
@@ -218,9 +212,7 @@ export const resumeData: Record<ResumeLocale, ResumeData> = {
       },
       {
         title: "AI-assisted development",
-        items: [
-          "Cursor; MCP, Skills, and Rules for repeatable automation.",
-        ],
+        items: ["Cursor; MCP, Skills, and Rules for repeatable automation."],
       },
       {
         title: "Also",

@@ -88,16 +88,16 @@ export async function generateMetadata({
   return {
     title: isZh ? "简历" : "Resume",
     description: isZh
-      ? "黄子杰的个人简历 — 前端 / 跨平台开发工程师，约 2 年港澳 Web 与 App 项目经验"
-      : "Zijie Huang's resume — Frontend & cross-platform developer with ~2 years of Web & App delivery in Macau/HK",
+      ? "黄子杰的个人简历 — 全栈开发工程师，约 4 年港澳 Web 与 App 项目经验"
+      : "Zijie Huang's resume — Full Stack developer with 3+ years of Web & App delivery in Macau/HK",
     alternates: {
       canonical: `${siteUrl}/${locale}/resume`,
     },
     openGraph: {
       title: isZh ? "简历 | Geeki's Blog" : "Resume | Geeki's Blog",
       description: isZh
-        ? "黄子杰的个人简历 — 前端 / 跨平台开发工程师，约 2 年港澳 Web 与 App 项目经验"
-        : "Zijie Huang's resume — Frontend & cross-platform developer with ~2 years of Web & App delivery in Macau/HK",
+        ? "黄子杰的个人简历 — 全栈开发工程师，约 4 年港澳 Web 与 App 项目经验"
+        : "Zijie Huang's resume — Full Stack developer with 3+ years of Web & App delivery in Macau/HK",
       url: `${siteUrl}/${locale}/resume`,
     },
   };

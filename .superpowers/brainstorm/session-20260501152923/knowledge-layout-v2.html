@@ -1,0 +1,208 @@
+<h2>Knowledge 模块 — C 方案细化（多分类支持）</h2>
+<p class="subtitle">列表页 + 全屏沉浸演示，含分类筛选。两种细节方案供选择。</p>
+
+<div class="section">
+  <h3 style="margin-bottom:16px;">方案 C1 · 分类标签栏 + 知识卡片</h3>
+  <div class="mockup">
+    <div class="mockup-header">列表页 /knowledge</div>
+    <div class="mockup-body" style="background:#0f172a;padding:20px;font-family:'Segoe UI',sans-serif;">
+      <!-- 页面标题 -->
+      <div style="margin-bottom:20px;">
+        <div style="color:#f1f5f9;font-size:18px;font-weight:700;margin-bottom:4px;">Knowledge Base</div>
+        <div style="color:#64748b;font-size:12px;">探索前端技术原理，理解底层实现</div>
+      </div>
+      <!-- 分类标签 -->
+      <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;">
+        <span style="background:#0ea5e9;color:#fff;font-size:11px;padding:4px 12px;border-radius:20px;cursor:pointer;">All</span>
+        <span style="background:#1e293b;border:1px solid #334155;color:#94a3b8;font-size:11px;padding:4px 12px;border-radius:20px;cursor:pointer;">⚛ React</span>
+        <span style="background:#1e293b;border:1px solid #334155;color:#94a3b8;font-size:11px;padding:4px 12px;border-radius:20px;cursor:pointer;">🟡 JavaScript</span>
+        <span style="background:#1e293b;border:1px solid #334155;color:#94a3b8;font-size:11px;padding:4px 12px;border-radius:20px;cursor:pointer;">📱 React Native</span>
+        <span style="background:#1e293b;border:1px solid #334155;color:#94a3b8;font-size:11px;padding:4px 12px;border-radius:20px;cursor:pointer;">🎨 CSS</span>
+      </div>
+      <!-- 知识卡片网格 -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+        <div style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:14px;cursor:pointer;transition:all 0.2s;">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
+            <span style="background:#0ea5e9;color:#fff;font-size:9px;padding:2px 6px;border-radius:4px;">React</span>
+          </div>
+          <div style="color:#f1f5f9;font-size:12px;font-weight:600;margin-bottom:4px;">Diff 算法原理</div>
+          <div style="color:#64748b;font-size:10px;line-height:1.4;margin-bottom:10px;">Virtual DOM 对比策略，key 的作用与三大假设</div>
+          <div style="display:flex;align-items:center;gap:4px;">
+            <div style="width:8px;height:8px;border-radius:50%;background:#22c55e;"></div>
+            <span style="color:#64748b;font-size:9px;">6 步动画演示</span>
+          </div>
+        </div>
+        <div style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:14px;cursor:pointer;">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
+            <span style="background:#f59e0b;color:#fff;font-size:9px;padding:2px 6px;border-radius:4px;">JavaScript</span>
+          </div>
+          <div style="color:#f1f5f9;font-size:12px;font-weight:600;margin-bottom:4px;">Event Loop</div>
+          <div style="color:#64748b;font-size:10px;line-height:1.4;margin-bottom:10px;">宏任务、微任务、调用栈可视化</div>
+          <div style="display:flex;align-items:center;gap:4px;">
+            <div style="width:8px;height:8px;border-radius:50%;background:#f59e0b;"></div>
+            <span style="color:#64748b;font-size:9px;">4 步动画演示</span>
+          </div>
+        </div>
+        <div style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:14px;cursor:pointer;opacity:0.5;">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
+            <span style="background:#8b5cf6;color:#fff;font-size:9px;padding:2px 6px;border-radius:4px;">React Native</span>
+          </div>
+          <div style="color:#f1f5f9;font-size:12px;font-weight:600;margin-bottom:4px;">Bridge 通信原理</div>
+          <div style="color:#64748b;font-size:10px;line-height:1.4;margin-bottom:10px;">JS 线程与原生线程的通信机制</div>
+          <div style="display:flex;align-items:center;gap:4px;">
+            <div style="width:8px;height:8px;border-radius:50%;background:#64748b;"></div>
+            <span style="color:#64748b;font-size:9px;">即将上线</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mockup" style="margin-top:12px;">
+    <div class="mockup-header">点击卡片 → 全屏演示页 /knowledge/react-diff</div>
+    <div class="mockup-body" style="background:#0f172a;padding:20px;font-family:'Segoe UI',sans-serif;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+        <span style="color:#64748b;font-size:11px;cursor:pointer;">← 返回</span>
+        <span style="background:#0ea5e9;color:#fff;font-size:9px;padding:2px 6px;border-radius:4px;">React</span>
+        <span style="color:#f1f5f9;font-size:14px;font-weight:600;">Diff 算法原理</span>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;">
+        <div style="flex:1;background:#1e293b;border-radius:8px;padding:16px;min-height:80px;">
+          <div style="color:#94a3b8;font-size:10px;margin-bottom:8px;">▶ 步骤 2 / 6 — 同层比较</div>
+          <div style="display:flex;gap:20px;justify-content:center;">
+            <div style="text-align:center;">
+              <div style="color:#64748b;font-size:9px;margin-bottom:4px;">旧树</div>
+              <div style="border:1px solid #38bdf8;border-radius:4px;padding:6px 10px;color:#38bdf8;font-size:10px;">div</div>
+            </div>
+            <div style="display:flex;align-items:center;color:#22c55e;font-size:16px;">→</div>
+            <div style="text-align:center;">
+              <div style="color:#64748b;font-size:9px;margin-bottom:4px;">新树</div>
+              <div style="border:1px solid #22c55e;border-radius:4px;padding:6px 10px;color:#22c55e;font-size:10px;">div</div>
+            </div>
+          </div>
+        </div>
+        <div style="width:180px;background:#1e293b;border-radius:8px;padding:12px;">
+          <div style="color:#94a3b8;font-size:9px;margin-bottom:8px;">相关代码</div>
+          <div style="background:#0f172a;border-radius:4px;padding:8px;font-family:monospace;color:#94a3b8;font-size:9px;line-height:1.6;">
+            <span style="color:#8b5cf6;">function</span> diff(<br/>
+            &nbsp;&nbsp;oldNode, newNode<br/>
+            ) {<br/>
+            &nbsp;&nbsp;<span style="color:#38bdf8;">if</span> (sameType) ...<br/>
+            }
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:12px;">
+        <button style="background:#1e293b;border:1px solid #334155;color:#94a3b8;font-size:10px;padding:5px 14px;border-radius:6px;cursor:pointer;">← 上一步</button>
+        <button style="background:#0ea5e9;color:#fff;font-size:10px;padding:5px 14px;border-radius:6px;cursor:pointer;">下一步 →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top:32px;">
+  <h3 style="margin-bottom:16px;">方案 C2 · 分类侧边栏 + 全屏演示（更聚焦）</h3>
+  <div class="split">
+    <div class="mockup">
+      <div class="mockup-header">列表页（侧边分类栏）</div>
+      <div class="mockup-body" style="background:#0f172a;padding:16px;display:flex;gap:12px;">
+        <!-- 左侧分类 -->
+        <div style="width:90px;flex-shrink:0;">
+          <div style="color:#64748b;font-size:9px;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">分类</div>
+          <div style="background:#0ea5e9;border-radius:6px;padding:6px 8px;margin-bottom:4px;">
+            <div style="color:#fff;font-size:10px;">⚛ React</div>
+            <div style="color:#bae6fd;font-size:8px;">3 个知识点</div>
+          </div>
+          <div style="padding:6px 8px;margin-bottom:4px;">
+            <div style="color:#94a3b8;font-size:10px;">🟡 JS</div>
+            <div style="color:#64748b;font-size:8px;">2 个知识点</div>
+          </div>
+          <div style="padding:6px 8px;margin-bottom:4px;">
+            <div style="color:#94a3b8;font-size:10px;">📱 RN</div>
+            <div style="color:#64748b;font-size:8px;">1 个知识点</div>
+          </div>
+          <div style="padding:6px 8px;">
+            <div style="color:#94a3b8;font-size:10px;">🎨 CSS</div>
+            <div style="color:#64748b;font-size:8px;">2 个知识点</div>
+          </div>
+        </div>
+        <!-- 右侧列表 -->
+        <div style="flex:1;">
+          <div style="color:#64748b;font-size:9px;margin-bottom:8px;">React · 3 个知识点</div>
+          <div style="background:#1e293b;border-radius:6px;padding:10px;margin-bottom:6px;border-left:3px solid #0ea5e9;">
+            <div style="color:#f1f5f9;font-size:11px;font-weight:600;">Diff 算法原理</div>
+            <div style="color:#64748b;font-size:9px;">6 步 · 代码可视化</div>
+          </div>
+          <div style="background:#1e293b;border-radius:6px;padding:10px;margin-bottom:6px;">
+            <div style="color:#f1f5f9;font-size:11px;">Fiber 架构</div>
+            <div style="color:#64748b;font-size:9px;">5 步 · 动画演示</div>
+          </div>
+          <div style="background:#1e293b;border-radius:6px;padding:10px;">
+            <div style="color:#f1f5f9;font-size:11px;">Hooks 原理</div>
+            <div style="color:#64748b;font-size:9px;">4 步 · 链表可视化</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup">
+      <div class="mockup-header">演示页（全屏沉浸）</div>
+      <div class="mockup-body" style="background:#0f172a;padding:16px;font-family:'Segoe UI',sans-serif;">
+        <div style="text-align:center;margin-bottom:12px;">
+          <div style="color:#0ea5e9;font-size:10px;margin-bottom:4px;">⚛ React · Diff 算法</div>
+          <div style="color:#f1f5f9;font-size:13px;font-weight:700;">步骤 2：同层节点比较</div>
+        </div>
+        <div style="background:#1e293b;border-radius:8px;padding:16px;margin-bottom:10px;">
+          <div style="display:flex;justify-content:space-around;align-items:center;">
+            <div style="text-align:center;">
+              <div style="color:#64748b;font-size:8px;margin-bottom:6px;">OLD TREE</div>
+              <div style="border:2px solid #38bdf8;border-radius:6px;width:40px;height:30px;display:flex;align-items:center;justify-content:center;color:#38bdf8;font-size:9px;margin:0 auto;">A</div>
+              <div style="width:1px;height:12px;background:#334155;margin:4px auto;"></div>
+              <div style="display:flex;gap:6px;">
+                <div style="border:1px solid #475569;border-radius:4px;width:28px;height:22px;display:flex;align-items:center;justify-content:center;color:#64748b;font-size:8px;">B</div>
+                <div style="border:1px solid #475569;border-radius:4px;width:28px;height:22px;display:flex;align-items:center;justify-content:center;color:#64748b;font-size:8px;">C</div>
+              </div>
+            </div>
+            <div style="font-size:18px;color:#64748b;">⟶</div>
+            <div style="text-align:center;">
+              <div style="color:#64748b;font-size:8px;margin-bottom:6px;">NEW TREE</div>
+              <div style="border:2px solid #22c55e;border-radius:6px;width:40px;height:30px;display:flex;align-items:center;justify-content:center;color:#22c55e;font-size:9px;margin:0 auto;">A</div>
+              <div style="width:1px;height:12px;background:#334155;margin:4px auto;"></div>
+              <div style="display:flex;gap:6px;">
+                <div style="border:1px solid #22c55e;border-radius:4px;width:28px;height:22px;display:flex;align-items:center;justify-content:center;color:#22c55e;font-size:8px;">B</div>
+                <div style="border:1px solid #ef4444;border-radius:4px;width:28px;height:22px;display:flex;align-items:center;justify-content:center;color:#ef4444;font-size:8px;">D</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;gap:4px;justify-content:center;margin-bottom:8px;">
+          <div style="width:6px;height:6px;border-radius:50%;background:#334155;"></div>
+          <div style="width:6px;height:6px;border-radius:50%;background:#0ea5e9;"></div>
+          <div style="width:6px;height:6px;border-radius:50%;background:#334155;"></div>
+          <div style="width:6px;height:6px;border-radius:50%;background:#334155;"></div>
+          <div style="width:6px;height:6px;border-radius:50%;background:#334155;"></div>
+          <div style="width:6px;height:6px;border-radius:50%;background:#334155;"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;">
+          <button style="background:#1e293b;border:1px solid #334155;color:#94a3b8;font-size:9px;padding:4px 10px;border-radius:5px;">← 上一步</button>
+          <button style="background:#0ea5e9;color:#fff;font-size:9px;padding:4px 10px;border-radius:5px;">下一步 →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="options" style="margin-top:24px;">
+  <div class="option" data-choice="c1" onclick="toggleSelect(this)">
+    <div class="letter">C1</div>
+    <div class="content">
+      <h3>卡片网格 + 顶部标签筛选</h3>
+      <p>类似 GitHub Topics 风格，顶部横向分类标签，下方知识点卡片网格。视觉更丰富，适合展示多个知识点。</p>
+    </div>
+  </div>
+  <div class="option" data-choice="c2" onclick="toggleSelect(this)">
+    <div class="letter">C2</div>
+    <div class="content">
+      <h3>侧边分类栏 + 全屏演示</h3>
+      <p>左侧固定分类导航，内容区显示该分类下所有知识点列表，点击直接全屏演示。更适合分类较多时的导航体验。</p>
+    </div>
+  </div>
+</div>
